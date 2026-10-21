@@ -175,9 +175,11 @@ def build() -> dict:
                         f"{pre_n} team-specific predictions picked Toronto, while its win probability ranged "
                         f"{pct(min(pre_wp))}–{pct(max(pre_wp))}. "
                         f"Afterwards, nobody claimed to have seen Toronto's win coming that early.")
+    checked = (f" A hand check found only <mark>{prec['postgame']['yes']} of {prec['postgame']['n']}</mark> of them were "
+               f"real claims." if prec and prec["postgame"]["n"] else "")
     notes_r4.append(f"<b>\"We knew it\" was rare:</b> {h['n_claims_main']} inevitability claims in "
-                    f"{sum(v['postgame_comments'] for v in fan.values()):,} postgame comments. Too few to measure a hindsight gap "
-                    f"with any confidence.")
+                    f"{sum(v['postgame_comments'] for v in fan.values()):,} postgame comments.{checked} Too few to measure "
+                    f"a hindsight gap with any confidence.")
     lad, tor = fan.get("LAD", {}), fan.get("TOR", {})
     notes_r4.append(f"<b>Fanbases:</b> {lad.get('claims_per_100')} \"inevitable\" claims per 100 Dodgers postgame comments vs "
                     f"{tor.get('claims_per_100')} per 100 Blue Jays comments. Before the 6th, Dodgers fans' live predictions picked "
@@ -223,8 +225,13 @@ def build() -> dict:
             "b": pg["b_positive"], "a": pg["a_positive"], "both": pg["both_agree"],
             "missed": f"~{rc['postgame']['est_missed']:,} ({rc['postgame']['sample_positives']}/{rc['postgame']['sample']} sample)"}]
     if prec:
+        names = {"attribution": "comment is about the batter", "ingame": "live predictions",
+                 "postgame": "postgame \"we knew it\" claims"}
         spot_html = ("<b>Spot-check (hand-checked yes/no):</b> " + "; ".join(
-            f"{name}: {pct(v['precision'])} correct ({v['yes']}/{v['n']})" for name, v in prec.items() if v["n"]) + ".")
+            f"{names[name]}: <b>{pct(v['precision'])}</b> correct ({v['yes']}/{v['n']})"
+            for name, v in prec.items() if v["n"]) + ". "
+            "Most wrong live predictions were about the series, not this game. Wrong postgame claims were "
+            "mostly sarcasm or comments that a play simply \"felt destined\".")
     else:
         spot_html = ("<div class='pending'><b>Spot-check pending.</b> The 10 attribution pairs and 40 classified comments "
                      "haven't been hand-checked yet, so classifier precision is unknown.</div>")
