@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.egg-info/
+.pytest_cache/
+# Reddit-derived (comment text, hashed authors): internal only, never publish
+data/imported/
+data/reactions.parquet
+data/claims.parquet
+reports/spotcheck*
+runs/llm_cache/

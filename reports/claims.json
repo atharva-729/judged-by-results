@@ -1,0 +1,184 @@
+{
+  "classifier": "B only (local NLI)",
+  "recall": {
+    "ingame": {
+      "n_pool": 44258,
+      "n_filtered": 1242,
+      "sample": 300,
+      "sample_positives": 1,
+      "est_missed": 143,
+      "filtered_positives": 167
+    },
+    "postgame": {
+      "n_pool": 3723,
+      "n_filtered": 197,
+      "sample": 300,
+      "sample_positives": 1,
+      "est_missed": 12,
+      "filtered_positives": 9
+    }
+  },
+  "spend_today_usd": 0.0,
+  "counts": {
+    "ingame": {
+      "after_filter": 1242,
+      "b_positive": 167,
+      "a_positive": null,
+      "both_agree": null,
+      "main": 167,
+      "by_winner": {
+        "TOR": 71,
+        "none": 50,
+        "LAD": 46
+      },
+      "by_team": {
+        "LAD": 91,
+        "neutral": 51,
+        "TOR": 25
+      }
+    },
+    "postgame": {
+      "after_filter": 197,
+      "b_positive": 9,
+      "a_positive": null,
+      "both_agree": null,
+      "main": 9,
+      "by_winner": {
+        "TOR": 9
+      },
+      "by_team": {
+        "LAD": 4,
+        "neutral": 3,
+        "TOR": 2
+      }
+    }
+  },
+  "examples": {
+    "ingame": [
+      {
+        "team": "neutral",
+        "winner": "TOR",
+        "text": "It's over [image]"
+      },
+      {
+        "team": "neutral",
+        "winner": "LAD",
+        "text": "It’s not over the LA just needs 2 touchdowns and they’re back in the lead."
+      },
+      {
+        "team": "LAD",
+        "winner": "LAD",
+        "text": "This game is flushed I think some of it was too much time off esp for snell. I think we come back and take game 2 tomor…"
+      },
+      {
+        "team": "LAD",
+        "winner": "LAD",
+        "text": "Well that’s it guys. Game over. Ohtani struck out"
+      },
+      {
+        "team": "LAD",
+        "winner": "TOR",
+        "text": "It’s feeling like this series is over already. Absolutely pathetic showing. Jays are better in literally every single a…"
+      },
+      {
+        "team": "neutral",
+        "winner": "LAD",
+        "text": "This game is done"
+      },
+      {
+        "team": "LAD",
+        "winner": NaN,
+        "text": "Rare meatball by Blake. We were never gonna win scoring just two runs, this is going to be a shootout"
+      },
+      {
+        "team": "neutral",
+        "winner": "TOR",
+        "text": "GG this series is done enjoy your championship Toronto"
+      },
+      {
+        "team": "LAD",
+        "winner": "TOR",
+        "text": "Walk a runner in and it’s game over"
+      },
+      {
+        "team": "LAD",
+        "winner": NaN,
+        "text": "Hmm, this is definitely shaping up to be a Dodger loss, a lot of our games where we allow a big comeback we just roll o…"
+      }
+    ],
+    "postgame": [
+      {
+        "team": "TOR",
+        "winner": "TOR",
+        "text": "My mom says the Dodgers need a “good ass-whooping anyways”. We live in LA too, but grew up as Giants fans and have Cana…"
+      },
+      {
+        "team": "LAD",
+        "winner": "TOR",
+        "text": "Need all the cocky ass dodgers fans to sit down. We knew this team is the one offense that can break through our SP and…"
+      },
+      {
+        "team": "LAD",
+        "winner": "TOR",
+        "text": "Dodgers WON tonight, folks. Everybody knows it. The Blue Jays tried to sneak a few fake runs in the sixth, total disgra…"
+      },
+      {
+        "team": "TOR",
+        "winner": "TOR",
+        "text": "I love this. I knew this was going to happen tonight with how over confident the majority of Dodgers fans were. They th…"
+      },
+      {
+        "team": "LAD",
+        "winner": "TOR",
+        "text": "Oh my bad! It’s just it was really obvious against snell. He would get a full count and then it was a ball when it was…"
+      },
+      {
+        "team": "neutral",
+        "winner": "TOR",
+        "text": "We all know it was over with a pickoff on ohtani"
+      },
+      {
+        "team": "LAD",
+        "winner": "TOR",
+        "text": "Anyone with half a brain knew it wasn’t going to be as sweep of the jays. They’re a great team. I was hoping Seattle wo…"
+      },
+      {
+        "team": "neutral",
+        "winner": "TOR",
+        "text": "No it wasn’t lmao. Toronto was supposed to win this game. If they lose tomorrow all the momentum shifts to the dodgers."
+      },
+      {
+        "team": "neutral",
+        "winner": "TOR",
+        "text": "Seriously. That grand slam felt destined. Just like springers game 7 hr"
+      }
+    ]
+  },
+  "top_moments": [
+    {
+      "at_bat_index": 53,
+      "n_claims": 1,
+      "inning": 6,
+      "half": "bottom",
+      "description": "Addison Barger hits a grand slam (3) to center field. Nathan Lukes scores. Andrés Giménez scores. George Springer scores.",
+      "tor_wp_after": 0.992
+    },
+    {
+      "at_bat_index": 48,
+      "n_claims": 1,
+      "inning": 6,
+      "half": "bottom",
+      "description": "Daulton Varsho hit by pitch. Isiah Kiner-Falefa to 3rd. Alejandro Kirk to 2nd.",
+      "tor_wp_after": 0.787
+    },
+    {
+      "at_bat_index": 49,
+      "n_claims": 1,
+      "inning": 6,
+      "half": "bottom",
+      "description": "Ernie Clement singles on a ground ball to center fielder Andy Pages. Isiah Kiner-Falefa scores. Alejandro Kirk to 3rd. Daulton Varsho to 2nd.",
+      "tor_wp_after": 0.873
+    }
+  ],
+  "postgame_main_unmapped": 6
+}

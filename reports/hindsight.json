@@ -1,0 +1,1127 @@
+{
+  "winner": "TOR",
+  "belief_window_min": 10,
+  "bands": {
+    "belief_window_min": 10,
+    "early_wp_band": [
+      0.3,
+      0.7
+    ],
+    "decided_wp_min": 0.9
+  },
+  "moments": [
+    {
+      "at_bat_index": 48,
+      "inning": 6,
+      "half": "bottom",
+      "description": "Daulton Varsho hit by pitch. Isiah Kiner-Falefa to 3rd. Alejandro Kirk to 2nd.",
+      "ts": "2025-10-25T02:16:20.242000+00:00",
+      "winner_wp": 0.787,
+      "winner_wp_before": 0.698,
+      "band": "between",
+      "claims": {
+        "n": 1,
+        "share_winner": 1.0,
+        "by_team": {
+          "LAD": 1
+        },
+        "certainty": {
+          "high": 1
+        },
+        "how": {
+          "biggest swing of inning 6": 1
+        }
+      },
+      "belief": {
+        "n": 14,
+        "share_winner": 0.6428571428571429,
+        "LAD_n": 11,
+        "LAD_share_winner": 0.5454545454545454,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      "LAD_mood": -0.822657894736842,
+      "TOR_mood": 0.6303333333333333
+    },
+    {
+      "at_bat_index": 49,
+      "inning": 6,
+      "half": "bottom",
+      "description": "Ernie Clement singles on a ground ball to center fielder Andy Pages. Isiah Kiner-Falefa scores. Alejandro Kirk to 3rd. Daulton Varsho to 2nd.",
+      "ts": "2025-10-25T02:19:57.897000+00:00",
+      "winner_wp": 0.873,
+      "winner_wp_before": 0.787,
+      "band": "between",
+      "claims": {
+        "n": 1,
+        "share_winner": 1.0,
+        "by_team": {
+          "TOR": 1
+        },
+        "certainty": {
+          "high": 1
+        },
+        "how": {
+          "pitching_change_6": 1
+        }
+      },
+      "belief": {
+        "n": 18,
+        "share_winner": 0.7777777777777778,
+        "LAD_n": 14,
+        "LAD_share_winner": 0.7142857142857143,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      "LAD_mood": -0.8527777777777779,
+      "TOR_mood": 0.7616875000000001
+    },
+    {
+      "at_bat_index": 53,
+      "inning": 6,
+      "half": "bottom",
+      "description": "Addison Barger hits a grand slam (3) to center field. Nathan Lukes scores. Andrés Giménez scores. George Springer scores.",
+      "ts": "2025-10-25T02:32:30.297000+00:00",
+      "winner_wp": 0.992,
+      "winner_wp_before": 0.942,
+      "band": "decided",
+      "claims": {
+        "n": 1,
+        "share_winner": 1.0,
+        "by_team": {
+          "neutral": 1
+        },
+        "certainty": {
+          "low": 1
+        },
+        "how": {
+          "grand slam": 1
+        }
+      },
+      "belief": {
+        "n": 43,
+        "share_winner": 0.6744186046511628,
+        "LAD_n": 26,
+        "LAD_share_winner": 0.6153846153846154,
+        "TOR_n": 5,
+        "TOR_share_winner": 0.8
+      },
+      "LAD_mood": -0.9304468085106383,
+      "TOR_mood": 0.9583333333333334
+    }
+  ],
+  "split": {
+    "early": {
+      "moments": 0,
+      "claims": 0,
+      "claimed_share_winner": null,
+      "belief_n": 0,
+      "belief_share_winner": null,
+      "mean_winner_wp": null
+    },
+    "between": {
+      "moments": 2,
+      "claims": 2,
+      "claimed_share_winner": 1.0,
+      "belief_n": 32,
+      "belief_share_winner": 0.71875,
+      "mean_winner_wp": 0.8300000000000001
+    },
+    "decided": {
+      "moments": 1,
+      "claims": 1,
+      "claimed_share_winner": 1.0,
+      "belief_n": 43,
+      "belief_share_winner": 0.6744186046511628,
+      "mean_winner_wp": 0.992
+    }
+  },
+  "same_user": {
+    "claimants": 3,
+    "near_moment": {
+      "users": 0,
+      "pairs": 0,
+      "said_same_then": 0,
+      "said_other_team_then": 0
+    },
+    "latest_prediction_before": {
+      "users": 0,
+      "pairs": 0,
+      "said_same_then": 0,
+      "said_other_team_then": 0
+    }
+  },
+  "fanbase": {
+    "LAD": {
+      "postgame_comments": 1127,
+      "claims": 4,
+      "claims_per_100": 0.35,
+      "claims_favour_winner": 4,
+      "ingame_predictions": 67,
+      "pre6th_predictions": 9,
+      "pre6th_share_winner": 0.0
+    },
+    "TOR": {
+      "postgame_comments": 1775,
+      "claims": 2,
+      "claims_per_100": 0.11,
+      "claims_favour_winner": 2,
+      "ingame_predictions": 18,
+      "pre6th_predictions": 3,
+      "pre6th_share_winner": 0.6666666666666666
+    },
+    "neutral": {
+      "postgame_comments": 821,
+      "claims": 3,
+      "claims_per_100": 0.37,
+      "claims_favour_winner": 3,
+      "ingame_predictions": 32,
+      "pre6th_predictions": 6,
+      "pre6th_share_winner": 0.3333333333333333
+    }
+  },
+  "n_claims_main": 9,
+  "n_claims_mapped": 3,
+  "n_predictions_main": 167,
+  "timeline": {
+    "wp": [
+      {
+        "t": "2025-10-25T00:15:45.947000+00:00",
+        "winner_wp": 0.522,
+        "inning": 1,
+        "half": "top",
+        "at_bat_index": 0
+      },
+      {
+        "t": "2025-10-25T00:17:41.702000+00:00",
+        "winner_wp": 0.538,
+        "inning": 1,
+        "half": "top",
+        "at_bat_index": 1
+      },
+      {
+        "t": "2025-10-25T00:19:22.031000+00:00",
+        "winner_wp": 0.548,
+        "inning": 1,
+        "half": "top",
+        "at_bat_index": 2
+      },
+      {
+        "t": "2025-10-25T00:22:55.153000+00:00",
+        "winner_wp": 0.526,
+        "inning": 1,
+        "half": "bottom",
+        "at_bat_index": 3
+      },
+      {
+        "t": "2025-10-25T00:24:00.584000+00:00",
+        "winner_wp": 0.51,
+        "inning": 1,
+        "half": "bottom",
+        "at_bat_index": 4
+      },
+      {
+        "t": "2025-10-25T00:26:35.911000+00:00",
+        "winner_wp": 0.522,
+        "inning": 1,
+        "half": "bottom",
+        "at_bat_index": 5
+      },
+      {
+        "t": "2025-10-25T00:28:19.097000+00:00",
+        "winner_wp": 0.548,
+        "inning": 1,
+        "half": "bottom",
+        "at_bat_index": 6
+      },
+      {
+        "t": "2025-10-25T00:33:43.282000+00:00",
+        "winner_wp": 0.572,
+        "inning": 1,
+        "half": "bottom",
+        "at_bat_index": 7
+      },
+      {
+        "t": "2025-10-25T00:35:27.205000+00:00",
+        "winner_wp": 0.5,
+        "inning": 1,
+        "half": "bottom",
+        "at_bat_index": 8
+      },
+      {
+        "t": "2025-10-25T00:39:56.235000+00:00",
+        "winner_wp": 0.462,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 9
+      },
+      {
+        "t": "2025-10-25T00:41:52.483000+00:00",
+        "winner_wp": 0.497,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 10
+      },
+      {
+        "t": "2025-10-25T00:42:53.794000+00:00",
+        "winner_wp": 0.458,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 11
+      },
+      {
+        "t": "2025-10-25T00:44:17.149000+00:00",
+        "winner_wp": 0.36,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 12
+      },
+      {
+        "t": "2025-10-25T00:46:30.352000+00:00",
+        "winner_wp": 0.306,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 13
+      },
+      {
+        "t": "2025-10-25T00:49:51.552000+00:00",
+        "winner_wp": 0.374,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 14
+      },
+      {
+        "t": "2025-10-25T00:51:27.460000+00:00",
+        "winner_wp": 0.443,
+        "inning": 2,
+        "half": "top",
+        "at_bat_index": 15
+      },
+      {
+        "t": "2025-10-25T00:55:12.901000+00:00",
+        "winner_wp": 0.484,
+        "inning": 2,
+        "half": "bottom",
+        "at_bat_index": 16
+      },
+      {
+        "t": "2025-10-25T00:56:49.631000+00:00",
+        "winner_wp": 0.446,
+        "inning": 2,
+        "half": "bottom",
+        "at_bat_index": 17
+      },
+      {
+        "t": "2025-10-25T00:59:02.301000+00:00",
+        "winner_wp": 0.413,
+        "inning": 2,
+        "half": "bottom",
+        "at_bat_index": 18
+      },
+      {
+        "t": "2025-10-25T00:59:39.837000+00:00",
+        "winner_wp": 0.388,
+        "inning": 2,
+        "half": "bottom",
+        "at_bat_index": 19
+      },
+      {
+        "t": "2025-10-25T01:04:10.840000+00:00",
+        "winner_wp": 0.353,
+        "inning": 3,
+        "half": "top",
+        "at_bat_index": 20
+      },
+      {
+        "t": "2025-10-25T01:06:29.917000+00:00",
+        "winner_wp": 0.302,
+        "inning": 3,
+        "half": "top",
+        "at_bat_index": 21
+      },
+      {
+        "t": "2025-10-25T01:09:15.102000+00:00",
+        "winner_wp": 0.272,
+        "inning": 3,
+        "half": "top",
+        "at_bat_index": 22
+      },
+      {
+        "t": "2025-10-25T01:11:56.952000+00:00",
+        "winner_wp": 0.296,
+        "inning": 3,
+        "half": "top",
+        "at_bat_index": 23
+      },
+      {
+        "t": "2025-10-25T01:13:54.633000+00:00",
+        "winner_wp": 0.328,
+        "inning": 3,
+        "half": "top",
+        "at_bat_index": 24
+      },
+      {
+        "t": "2025-10-25T01:18:25.511000+00:00",
+        "winner_wp": 0.301,
+        "inning": 3,
+        "half": "bottom",
+        "at_bat_index": 25
+      },
+      {
+        "t": "2025-10-25T01:20:25.406000+00:00",
+        "winner_wp": 0.331,
+        "inning": 3,
+        "half": "bottom",
+        "at_bat_index": 26
+      },
+      {
+        "t": "2025-10-25T01:21:17.658000+00:00",
+        "winner_wp": 0.271,
+        "inning": 3,
+        "half": "bottom",
+        "at_bat_index": 27
+      },
+      {
+        "t": "2025-10-25T01:25:24.454000+00:00",
+        "winner_wp": 0.289,
+        "inning": 4,
+        "half": "top",
+        "at_bat_index": 28
+      },
+      {
+        "t": "2025-10-25T01:27:18.647000+00:00",
+        "winner_wp": 0.302,
+        "inning": 4,
+        "half": "top",
+        "at_bat_index": 29
+      },
+      {
+        "t": "2025-10-25T01:27:57.001000+00:00",
+        "winner_wp": 0.311,
+        "inning": 4,
+        "half": "top",
+        "at_bat_index": 30
+      },
+      {
+        "t": "2025-10-25T01:33:23.551000+00:00",
+        "winner_wp": 0.359,
+        "inning": 4,
+        "half": "bottom",
+        "at_bat_index": 31
+      },
+      {
+        "t": "2025-10-25T01:34:18.136000+00:00",
+        "winner_wp": 0.56,
+        "inning": 4,
+        "half": "bottom",
+        "at_bat_index": 32
+      },
+      {
+        "t": "2025-10-25T01:35:19.242000+00:00",
+        "winner_wp": 0.533,
+        "inning": 4,
+        "half": "bottom",
+        "at_bat_index": 33
+      },
+      {
+        "t": "2025-10-25T01:36:08.145000+00:00",
+        "winner_wp": 0.513,
+        "inning": 4,
+        "half": "bottom",
+        "at_bat_index": 34
+      },
+      {
+        "t": "2025-10-25T01:37:54.613000+00:00",
+        "winner_wp": 0.5,
+        "inning": 4,
+        "half": "bottom",
+        "at_bat_index": 35
+      },
+      {
+        "t": "2025-10-25T01:42:27.082000+00:00",
+        "winner_wp": 0.53,
+        "inning": 5,
+        "half": "top",
+        "at_bat_index": 36
+      },
+      {
+        "t": "2025-10-25T01:44:14.942000+00:00",
+        "winner_wp": 0.497,
+        "inning": 5,
+        "half": "top",
+        "at_bat_index": 37
+      },
+      {
+        "t": "2025-10-25T01:47:24.660000+00:00",
+        "winner_wp": 0.536,
+        "inning": 5,
+        "half": "top",
+        "at_bat_index": 38
+      },
+      {
+        "t": "2025-10-25T01:50:34.110000+00:00",
+        "winner_wp": 0.567,
+        "inning": 5,
+        "half": "top",
+        "at_bat_index": 39
+      },
+      {
+        "t": "2025-10-25T01:54:00.037000+00:00",
+        "winner_wp": 0.613,
+        "inning": 5,
+        "half": "bottom",
+        "at_bat_index": 40
+      },
+      {
+        "t": "2025-10-25T01:57:04.157000+00:00",
+        "winner_wp": 0.515,
+        "inning": 5,
+        "half": "bottom",
+        "at_bat_index": 41
+      },
+      {
+        "t": "2025-10-25T01:58:23.861000+00:00",
+        "winner_wp": 0.5,
+        "inning": 5,
+        "half": "bottom",
+        "at_bat_index": 42
+      },
+      {
+        "t": "2025-10-25T02:03:16.742000+00:00",
+        "winner_wp": 0.534,
+        "inning": 6,
+        "half": "top",
+        "at_bat_index": 43
+      },
+      {
+        "t": "2025-10-25T02:04:29.187000+00:00",
+        "winner_wp": 0.559,
+        "inning": 6,
+        "half": "top",
+        "at_bat_index": 44
+      },
+      {
+        "t": "2025-10-25T02:06:05.861000+00:00",
+        "winner_wp": 0.576,
+        "inning": 6,
+        "half": "top",
+        "at_bat_index": 45
+      },
+      {
+        "t": "2025-10-25T02:10:40.827000+00:00",
+        "winner_wp": 0.626,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 46
+      },
+      {
+        "t": "2025-10-25T02:11:35.442000+00:00",
+        "winner_wp": 0.698,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 47
+      },
+      {
+        "t": "2025-10-25T02:16:20.242000+00:00",
+        "winner_wp": 0.787,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 48
+      },
+      {
+        "t": "2025-10-25T02:19:57.897000+00:00",
+        "winner_wp": 0.873,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 49
+      },
+      {
+        "t": "2025-10-25T02:24:41.181000+00:00",
+        "winner_wp": 0.927,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 50
+      },
+      {
+        "t": "2025-10-25T02:26:29.237000+00:00",
+        "winner_wp": 0.959,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 51
+      },
+      {
+        "t": "2025-10-25T02:27:56.012000+00:00",
+        "winner_wp": 0.942,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 52
+      },
+      {
+        "t": "2025-10-25T02:32:30.297000+00:00",
+        "winner_wp": 0.992,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 53
+      },
+      {
+        "t": "2025-10-25T02:34:15.618000+00:00",
+        "winner_wp": 0.993,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 54
+      },
+      {
+        "t": "2025-10-25T02:35:32.167000+00:00",
+        "winner_wp": 0.992,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 55
+      },
+      {
+        "t": "2025-10-25T02:36:38.400000+00:00",
+        "winner_wp": 0.998,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 56
+      },
+      {
+        "t": "2025-10-25T02:37:30.278000+00:00",
+        "winner_wp": 0.998,
+        "inning": 6,
+        "half": "bottom",
+        "at_bat_index": 57
+      },
+      {
+        "t": "2025-10-25T02:41:30.177000+00:00",
+        "winner_wp": 0.996,
+        "inning": 7,
+        "half": "top",
+        "at_bat_index": 58
+      },
+      {
+        "t": "2025-10-25T02:43:24.102000+00:00",
+        "winner_wp": 0.998,
+        "inning": 7,
+        "half": "top",
+        "at_bat_index": 59
+      },
+      {
+        "t": "2025-10-25T02:45:54.478000+00:00",
+        "winner_wp": 0.994,
+        "inning": 7,
+        "half": "top",
+        "at_bat_index": 60
+      },
+      {
+        "t": "2025-10-25T02:47:04.716000+00:00",
+        "winner_wp": 0.996,
+        "inning": 7,
+        "half": "top",
+        "at_bat_index": 61
+      },
+      {
+        "t": "2025-10-25T02:48:56.723000+00:00",
+        "winner_wp": 0.997,
+        "inning": 7,
+        "half": "top",
+        "at_bat_index": 62
+      },
+      {
+        "t": "2025-10-25T02:52:51.696000+00:00",
+        "winner_wp": 0.996,
+        "inning": 7,
+        "half": "bottom",
+        "at_bat_index": 63
+      },
+      {
+        "t": "2025-10-25T02:53:35.972000+00:00",
+        "winner_wp": 0.996,
+        "inning": 7,
+        "half": "bottom",
+        "at_bat_index": 64
+      },
+      {
+        "t": "2025-10-25T02:55:51.835000+00:00",
+        "winner_wp": 0.996,
+        "inning": 7,
+        "half": "bottom",
+        "at_bat_index": 65
+      },
+      {
+        "t": "2025-10-25T03:00:05.987000+00:00",
+        "winner_wp": 0.998,
+        "inning": 8,
+        "half": "top",
+        "at_bat_index": 66
+      },
+      {
+        "t": "2025-10-25T03:03:13.140000+00:00",
+        "winner_wp": 0.996,
+        "inning": 8,
+        "half": "top",
+        "at_bat_index": 67
+      },
+      {
+        "t": "2025-10-25T03:05:30.903000+00:00",
+        "winner_wp": 0.998,
+        "inning": 8,
+        "half": "top",
+        "at_bat_index": 68
+      },
+      {
+        "t": "2025-10-25T03:07:09.903000+00:00",
+        "winner_wp": 0.999,
+        "inning": 8,
+        "half": "top",
+        "at_bat_index": 69
+      },
+      {
+        "t": "2025-10-25T03:11:36.484000+00:00",
+        "winner_wp": 0.999,
+        "inning": 8,
+        "half": "bottom",
+        "at_bat_index": 70
+      },
+      {
+        "t": "2025-10-25T03:12:21.554000+00:00",
+        "winner_wp": 0.999,
+        "inning": 8,
+        "half": "bottom",
+        "at_bat_index": 71
+      },
+      {
+        "t": "2025-10-25T03:14:08.739000+00:00",
+        "winner_wp": 0.999,
+        "inning": 8,
+        "half": "bottom",
+        "at_bat_index": 72
+      },
+      {
+        "t": "2025-10-25T03:15:34.977000+00:00",
+        "winner_wp": 0.999,
+        "inning": 8,
+        "half": "bottom",
+        "at_bat_index": 73
+      },
+      {
+        "t": "2025-10-25T03:18:53.898000+00:00",
+        "winner_wp": 0.999,
+        "inning": 9,
+        "half": "top",
+        "at_bat_index": 74
+      },
+      {
+        "t": "2025-10-25T03:20:23.363000+00:00",
+        "winner_wp": 0.999,
+        "inning": 9,
+        "half": "top",
+        "at_bat_index": 75
+      },
+      {
+        "t": "2025-10-25T03:22:08.666000+00:00",
+        "winner_wp": 0.999,
+        "inning": 9,
+        "half": "top",
+        "at_bat_index": 76
+      },
+      {
+        "t": "2025-10-25T03:27:15.911000+00:00",
+        "winner_wp": 1.0,
+        "inning": 9,
+        "half": "top",
+        "at_bat_index": 77
+      }
+    ],
+    "belief": [
+      {
+        "t": "2025-10-25T00:10:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:15:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:20:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:25:00+00:00",
+        "n": 2,
+        "share_winner": 0.5,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T00:30:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:35:00+00:00",
+        "n": 1,
+        "share_winner": 1.0,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:40:00+00:00",
+        "n": 1,
+        "share_winner": 1.0,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T00:45:00+00:00",
+        "n": 2,
+        "share_winner": 0.5,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:50:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T00:55:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:00:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:05:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:10:00+00:00",
+        "n": 2,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 1,
+        "TOR_share_winner": 0.0
+      },
+      {
+        "t": "2025-10-25T01:15:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:20:00+00:00",
+        "n": 3,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:25:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:30:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:35:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:40:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:45:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:50:00+00:00",
+        "n": 1,
+        "share_winner": 0.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T01:55:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T02:00:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T02:05:00+00:00",
+        "n": 2,
+        "share_winner": 0.5,
+        "LAD_n": 2,
+        "LAD_share_winner": 0.5,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T02:10:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T02:15:00+00:00",
+        "n": 5,
+        "share_winner": 0.6,
+        "LAD_n": 2,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T02:20:00+00:00",
+        "n": 9,
+        "share_winner": 0.5555555555555556,
+        "LAD_n": 9,
+        "LAD_share_winner": 0.5555555555555556,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T02:25:00+00:00",
+        "n": 9,
+        "share_winner": 1.0,
+        "LAD_n": 5,
+        "LAD_share_winner": 1.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T02:30:00+00:00",
+        "n": 20,
+        "share_winner": 0.9,
+        "LAD_n": 10,
+        "LAD_share_winner": 1.0,
+        "TOR_n": 2,
+        "TOR_share_winner": 0.5
+      },
+      {
+        "t": "2025-10-25T02:35:00+00:00",
+        "n": 21,
+        "share_winner": 0.5714285714285714,
+        "LAD_n": 12,
+        "LAD_share_winner": 0.4166666666666667,
+        "TOR_n": 4,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T02:40:00+00:00",
+        "n": 9,
+        "share_winner": 0.3333333333333333,
+        "LAD_n": 7,
+        "LAD_share_winner": 0.42857142857142855,
+        "TOR_n": 1,
+        "TOR_share_winner": 0.0
+      },
+      {
+        "t": "2025-10-25T02:45:00+00:00",
+        "n": 5,
+        "share_winner": 0.6,
+        "LAD_n": 2,
+        "LAD_share_winner": 0.5,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T02:50:00+00:00",
+        "n": 4,
+        "share_winner": 0.5,
+        "LAD_n": 2,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 2,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T02:55:00+00:00",
+        "n": 2,
+        "share_winner": 0.0,
+        "LAD_n": 2,
+        "LAD_share_winner": 0.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T03:00:00+00:00",
+        "n": 2,
+        "share_winner": 1.0,
+        "LAD_n": 1,
+        "LAD_share_winner": 1.0,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T03:05:00+00:00",
+        "n": 2,
+        "share_winner": 0.5,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T03:10:00+00:00",
+        "n": 2,
+        "share_winner": 1.0,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T03:15:00+00:00",
+        "n": 1,
+        "share_winner": 1.0,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T03:20:00+00:00",
+        "n": 3,
+        "share_winner": 1.0,
+        "LAD_n": 2,
+        "LAD_share_winner": 1.0,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      },
+      {
+        "t": "2025-10-25T03:25:00+00:00",
+        "n": 3,
+        "share_winner": 0.6666666666666666,
+        "LAD_n": 2,
+        "LAD_share_winner": 0.5,
+        "TOR_n": 1,
+        "TOR_share_winner": 1.0
+      },
+      {
+        "t": "2025-10-25T03:30:00+00:00",
+        "n": 0,
+        "share_winner": null,
+        "LAD_n": 0,
+        "LAD_share_winner": null,
+        "TOR_n": 0,
+        "TOR_share_winner": null
+      }
+    ],
+    "claims": [
+      {
+        "t": "2025-10-25T02:16:20.242000+00:00",
+        "n": 1,
+        "share_winner": 1.0,
+        "label": "6 bottom: Daulton Varsho hit by pitch. Isiah Kiner-Falefa to 3rd. Alej"
+      },
+      {
+        "t": "2025-10-25T02:19:57.897000+00:00",
+        "n": 1,
+        "share_winner": 1.0,
+        "label": "6 bottom: Ernie Clement singles on a ground ball to center fielder And"
+      },
+      {
+        "t": "2025-10-25T02:32:30.297000+00:00",
+        "n": 1,
+        "share_winner": 1.0,
+        "label": "6 bottom: Addison Barger hits a grand slam (3) to center field. Nathan"
+      }
+    ]
+  }
+}
