@@ -56,6 +56,51 @@ def hook(balls: list[dict], cfg: dict) -> list[dict]:
     return cards
 
 
+HYPE = [("LET'S GO", r"let[’']?s go+"), ("f***", r"\bf+u+c+k"), ("lol / lmao", r"\b(?:lol|lmao)\b"),
+        ("clutch", r"\bclutch\b"), ("wow", r"\bwo+w\b"), ("omg", r"\bomg\b"), ("what a", r"\bwhat a\b")]
+
+
+def game_series(cfg: dict) -> dict:
+    """Per-minute comment volume, 2-minute fan mood by team, and key plays for annotations."""
+    from jbr.claims import stream_teams
+
+    imp = config.IMPORTED
+    plays = pd.read_parquet(imp / "plays.parquet").merge(pd.read_parquet(imp / "win_prob.parquet"),
+                                                         on=["game_pk", "at_bat_index"])
+    start, end = plays["start_time_utc"].min() - pd.Timedelta(minutes=5), plays["end_time_utc"].max() + pd.Timedelta(minutes=5)
+    vol = pd.read_parquet(imp / "volume.parquet")
+    vol = vol[(vol["t"] >= start) & (vol["t"] <= end)]
+    per_min = vol.groupby(vol["t"].dt.floor("1min"))["n"].sum()
+    ticks = pd.read_parquet(imp / "ticks.parquet")
+    ticks = ticks[ticks["mood"].notna() & ~ticks["stale"] & (ticks["t"] >= start) & (ticks["t"] <= end)]
+    ticks = ticks.assign(team=ticks["stream"].map(stream_teams())).dropna(subset=["team"])
+    mood = ticks.groupby([ticks["t"].dt.floor("2min"), "team"])["mood"].mean().unstack()
+    key = []
+    for r in plays.itertuples():
+        if not (r.event == "Home Run" or abs(r.wp_delta) >= 0.1):
+            continue
+        last = r.batter_name.split()[-1]
+        what = "grand slam" if "grand slam" in r.description else "HR" if r.event == "Home Run" else r.event.lower()
+        key.append({"t": r.end_time_utc, "label": f"{last} {what}", "wp": float(r.home_wp_after),
+                    "half": r.half, "inning": int(r.inning)})
+    return {"volume": [{"t": t, "n": int(n)} for t, n in per_min.items()],
+            "mood": [{"t": t, "TOR": (None if pd.isna(row.get("TOR")) else round(float(row["TOR"]), 3)),
+                      "LAD": (None if pd.isna(row.get("LAD")) else round(float(row["LAD"]), 3))}
+                     for t, row in mood.iterrows()],
+            "key_plays": key}
+
+
+def word_counts(react: pd.DataFrame, cfg: dict) -> dict:
+    bat = react[(react["role"] == "batter") & react["in_main"]].drop_duplicates("comment_id")
+    from jbr.attribute import process_pattern
+
+    process = [{"word": p, "n": int(bat["body"].str.contains(process_pattern([p])).sum())} for p in cfg["process_phrases"]]
+    hype = [{"word": w, "n": int(bat["body"].str.contains(p, case=False, regex=True).sum())} for w, p in HYPE]
+    return {"n_comments": int(len(bat)), "process": sorted(process, key=lambda d: -d["n"]),
+            "process_any": int(bat["body"].str.contains(process_pattern(cfg["process_phrases"])).sum()),
+            "hype": sorted(hype, key=lambda d: -d["n"])}
+
+
 def build() -> dict:
     cfg = config.load()
     o, c, h = _load("outcome.json"), _load("claims.json"), _load("hindsight.json")
@@ -81,6 +126,7 @@ def build() -> dict:
         "jev_roberta_r": f"{both['sentiment_jev'].corr(both['sentiment_roberta']):.2f}",
         "window_median": f"{lengths.median():.0f}", "n_unlucky": str(len(unlucky)), "n_lucky": str(len(lucky)),
         "built": dt.date.today().isoformat(),
+        "th_out_v": cfg["luck"]["unlucky_out_min_xba"], "th_hit_v": cfg["luck"]["lucky_hit_max_xba"],
     }
 
     split = h["split"]
@@ -100,6 +146,14 @@ def build() -> dict:
     else:
         keypoint += (f"<br><b>Hindsight:</b> no measurable rewriting. Only {h['n_claims_main']} postgame comments claimed "
                      f"the result was inevitable, and none pointed at the early, uncertain part of the game.")
+    real = (prec or {}).get("postgame", {}).get("yes")
+    keypoint = (
+        "<b>In this game, fans judged the result, not the swing.</b> A hit lifted the batter's own fans by a lot; "
+        "hitting the ball well, at the same result, did nothing measurable, and almost nobody mentioned luck. "
+        f"<b>Hindsight</b> couldn't be tested: just {h['n_claims_main']} postgame \"we knew it\" claims"
+        + (f" ({real} real on a hand check)" if real is not None else "")
+        + ", and the few that named a moment picked one that really was decisive."
+    )
 
     tiles = [
         {"big": f"{o['n_bip_with_xba']}", "title": "batted balls with Statcast xBA",
@@ -243,7 +297,12 @@ def build() -> dict:
             "balls": o["balls"], "notes": {"r1": notes_r1, "r2": notes_r2, "r3": notes_r3, "r4": notes_r4},
             "modeltiles": modeltiles, "awareness": aw, "timeline": h["timeline"], "hindsight_tiles": hindsight_tiles,
             "robustness": robustness, "pitcher_text": pitcher_text, "moments": h["moments"],
-            "sameuser_html": sameuser_html, "fanbase_html": fanbase_html, "clf": clf, "spot_html": spot_html}
+            "sameuser_html": sameuser_html, "fanbase_html": fanbase_html, "clf": clf, "spot_html": spot_html,
+            "game": game_series(cfg), "words": word_counts(react, cfg), "precision": prec,
+            "headline": {"hit": m["own_hit"], "xba": m["own_xba"], "unlucky": aw["unlucky_out"],
+                         "claims": h["n_claims_main"], "claims_real": (prec or {}).get("postgame", {}).get("yes"),
+                         "postgame_comments": sum(v["postgame_comments"] for v in fan.values()),
+                         "pre6_share": (pre_w / pre_n) if pre_n else None, "pre6_n": pre_n}}
     blob = json.dumps(data, ensure_ascii=False, default=str).replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8").replace("__DATA__", blob)
     OUT.parent.mkdir(exist_ok=True)

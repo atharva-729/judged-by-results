@@ -4,163 +4,254 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Judged by Results</title>
-<meta name="description" content="Do baseball fans judge the swing or where the ball landed? A one-game case study of outcome bias and hindsight in Reddit reactions to 2025 World Series Game 1.">
+<meta name="description" content="Do baseball fans judge the swing or where the ball landed? One World Series game, 52,872 Reddit comments and Statcast's xBA.">
 <style>
 :root{
   color-scheme:light;
-  --bg:#fcfcfb;--card:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--ink3:#7a7975;--line:#e3e2de;--grid:#efeeea;
-  --hl:#fff4d6;--hl-ink:#5a4100;
-  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;
-  --pos:#2a78d6;--neg:#eb6834;
+  --bg:#f6f5f1;--bg2:#ecebe5;--card:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--ink3:#7a7975;--line:#dedcd5;--grid:#ebeae4;
+  --hl:#fff1c7;--hl-ink:#5a4100;--glow:rgba(42,120,214,.10);
+  --hit:#1baf7a;--out:#eb6834;--tor:#2a78d6;--lad:#e87ba4;--wp:#0b0b0b;--claim:#6250d6;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   color-scheme:dark;
-  --bg:#1a1a19;--card:#232322;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#8f8e87;--line:#3a3a38;--grid:#2c2c2a;
-  --hl:#3a2f12;--hl-ink:#f5dc9a;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--pos:#3987e5;--neg:#d95926;
+  --bg:#121211;--bg2:#1a1a19;--card:#1f1f1e;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#8f8e87;--line:#353533;--grid:#2a2a28;
+  --hl:#3d3112;--hl-ink:#f7dd9b;--glow:rgba(57,135,229,.14);
+  --hit:#199e70;--out:#d95926;--tor:#3987e5;--lad:#d55181;--wp:#f0efec;--claim:#9085e9;
 }}
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#1a1a19;--card:#232322;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#8f8e87;--line:#3a3a38;--grid:#2c2c2a;
-  --hl:#3a2f12;--hl-ink:#f5dc9a;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--pos:#3987e5;--neg:#d95926;
+  --bg:#121211;--bg2:#1a1a19;--card:#1f1f1e;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#8f8e87;--line:#353533;--grid:#2a2a28;
+  --hl:#3d3112;--hl-ink:#f7dd9b;--glow:rgba(57,135,229,.14);
+  --hit:#199e70;--out:#d95926;--tor:#3987e5;--lad:#d55181;--wp:#f0efec;--claim:#9085e9;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:1040px;margin:0 auto;padding:28px 16px 80px}
-h1{font-size:26px;line-height:1.2;margin:0 0 6px}
-h2{font-size:20px;margin:44px 0 10px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+main{max-width:1080px;margin:0 auto;padding:0 16px 96px}
+section{padding:56px 0 8px}
+h1{font-size:36px;line-height:1.15;margin:6px 0 10px;letter-spacing:-.01em}
+h2{font-size:24px;line-height:1.25;margin:0 0 10px;letter-spacing:-.01em}
 h3{font-size:16px;margin:22px 0 8px}
 p{margin:8px 0}
-.lede{font-size:18px;color:var(--ink2);margin:0 0 14px}
+a{color:var(--tor)}
+.kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+.chapter{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tor);font-weight:700;margin-bottom:4px}
+.lede{font-size:19px;color:var(--ink2);margin:0 0 14px;max-width:780px}
 .muted{color:var(--ink2)}.small{font-size:13px}
-ul.tight{margin:6px 0;padding-left:20px}ul.tight li{margin:4px 0}
-mark{background:var(--hl);color:var(--hl-ink);padding:0 3px;border-radius:3px}
-.key{background:var(--hl);color:var(--hl-ink);border-radius:12px;padding:14px 18px;margin:16px 0;font-size:17px}
-.key b{font-weight:700}
+ul.tight{margin:6px 0;padding-left:20px}ul.tight li{margin:5px 0}
+mark{background:var(--hl);color:var(--hl-ink);padding:0 4px;border-radius:4px}
+.hero{padding-top:44px;position:relative}
+.hero:before{content:"";position:absolute;inset:-40px 0 auto 0;height:520px;background:radial-gradient(60% 60% at 50% 0%,var(--glow),transparent 70%);z-index:-1}
+.key{background:var(--hl);color:var(--hl-ink);border-radius:14px;padding:14px 18px;margin:16px 0 8px}
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0 6px}
+@media (max-width:720px){.chips{grid-template-columns:1fr}}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink)}
+.chip .n{font-size:30px;font-weight:800;line-height:1.05;font-variant-numeric:tabular-nums}
+.chip .l{font-size:13px;color:var(--ink2)}
 .grid{display:grid;gap:14px}
 .g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:720px){.g2,.g3{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.big{font-size:28px;font-weight:700;line-height:1.1}
-.tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--ink2)}
-.ball h3{margin:0 0 4px}.ball .q{font-style:italic;color:var(--ink2);margin:6px 0 0}
-a{color:var(--s1)}
-.down{font-size:14px}
-.matrix{width:100%;border-collapse:separate;border-spacing:6px}
-.matrix th{font-size:13px;font-weight:600;color:var(--ink2);text-align:left;padding:2px 4px}
-.matrix td.cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;cursor:pointer;vertical-align:top;min-width:110px}
-.matrix td.cell:hover,.matrix td.cell:focus{outline:2px solid var(--s1);outline-offset:1px}
-.cell .v{font-size:22px;font-weight:700}.cell .ci,.cell .n{font-size:12px;color:var(--ink2)}
-.bar0{height:8px;background:var(--grid);border-radius:4px;position:relative;margin:6px 0 2px}
-.bar0 i{position:absolute;top:0;height:8px;border-radius:4px}
-.bar0 s{position:absolute;left:50%;top:-2px;width:1px;height:12px;background:var(--ink3)}
-.split{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:18px;align-items:start}
-@media (max-width:820px){.split{grid-template-columns:1fr}}
-.legend{font-size:13px;color:var(--ink2)}.legend div{margin:6px 0}
+@media (max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.big{font-size:28px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 9px;color:var(--ink2)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:18px;align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.legend{font-size:13px;color:var(--ink2)}.legend div{margin:7px 0}
 .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.sw.line{height:3px;border-radius:2px;vertical-align:3px;width:16px}
 .scroll{overflow-x:auto}
+.cue{display:inline-block;margin-top:18px;font-size:13px;color:var(--ink3);text-decoration:none}
+.cue span{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(4px)}}
+/* matrix */
+.matrix{border-collapse:separate;border-spacing:6px;min-width:560px;width:100%}
+.matrix th{font-size:13px;font-weight:600;color:var(--ink2);text-align:left;padding:2px 4px}
+.matrix td.cell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;vertical-align:top;transition:transform .15s}
+.matrix td.cell:hover,.matrix td.cell:focus{outline:2px solid var(--tor);outline-offset:1px;transform:translateY(-2px)}
+.cell .v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}.cell .ci,.cell .n{font-size:12px;color:var(--ink2)}
+.bar0{height:8px;background:var(--grid);border-radius:4px;position:relative;margin:6px 0 2px}
+.bar0 i{position:absolute;top:0;height:8px;border-radius:4px;transition:width .9s cubic-bezier(.2,.8,.2,1),left .9s cubic-bezier(.2,.8,.2,1)}
+.bar0 s{position:absolute;left:50%;top:-2px;width:1px;height:12px;background:var(--ink3)}
+/* ball cards */
+.ball h3{margin:8px 0 2px}
+.gauges{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin:10px 0}
+.q{font-style:italic;color:var(--ink2);margin:8px 0 0}
+/* words */
+.wrow{display:grid;grid-template-columns:120px 1fr 48px;gap:10px;align-items:center;margin:6px 0;font-size:14px}
+.wbar{height:14px;border-radius:0 4px 4px 0;background:var(--out);width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.wbar.luck{background:var(--hit)}
+.wrow .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink2)}
+/* tables */
 table.t{border-collapse:collapse;width:100%;font-size:14px}
 table.t th,table.t td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
 table.t th{color:var(--ink2);font-weight:600}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 svg text{fill:var(--ink2);font-size:12px}
-.tip{position:fixed;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,.15);max-width:300px;display:none;z-index:5;color:var(--ink)}
-dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);max-width:760px;width:calc(100% - 32px);padding:18px 20px}
-dialog::backdrop{background:rgba(0,0,0,.4)}
+svg .lbl{fill:var(--ink);font-size:12px;font-weight:600}
+.tip{position:fixed;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;box-shadow:0 6px 20px rgba(0,0,0,.18);max-width:300px;display:none;z-index:5;color:var(--ink)}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);max-width:780px;width:calc(100% - 32px);padding:18px 20px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
 dialog .close{float:right;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:2px 10px;cursor:pointer}
-.ok{color:var(--s3);font-weight:600}.bad{color:var(--s2);font-weight:600}
-hr.how{border:0;border-top:2px solid var(--line);margin:56px 0 10px}
+.ok{color:var(--hit);font-weight:700}.bad{color:var(--out);font-weight:700}
+hr.how{border:0;border-top:2px solid var(--line);margin:64px 0 10px}
 .pending{border:1px dashed var(--line);border-radius:10px;padding:8px 12px;color:var(--ink2);font-size:14px}
 code{font-size:13px;background:var(--grid);padding:1px 5px;border-radius:4px}
-pre{background:var(--grid);padding:10px 12px;border-radius:8px;overflow-x:auto;font-size:13px}
+pre{background:var(--bg2);padding:10px 12px;border-radius:8px;overflow-x:auto;font-size:13px}
+/* motion */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.draw{transition:stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1)}
+.pop{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.in .pop,.pop.in{transform:scale(1)}
+@media (prefers-reduced-motion:reduce){.reveal,.pop,.draw,.wbar,.bar0 i{transition:none!important;opacity:1!important;transform:none!important}.cue span{animation:none}}
 </style>
 </head>
 <body>
 <main>
 
-<!-- ============ FIRST SCREEN ============ -->
-<h1>Judged by Results</h1>
-<p class="lede">When a batter hits the ball, do fans judge <b>how well he hit it</b>, or <b>whether it fell for a hit</b>? And after the game, do they rewrite what they "always knew"?</p>
-<ul class="tight">
-  <li><b>One game:</b> 2025 World Series Game 1, Dodgers 4 @ Blue Jays 11, with <span data-k="n_comments"></span> Reddit comments from both fanbases.</li>
-  <li><b>Separate quality from luck:</b> Statcast's <b>xBA</b> gives each batted ball's chance of becoming a hit from how hard and at what angle it was hit, whatever actually happened.</li>
-  <li><b>Read the reaction:</b> for each of <span data-k="n_bip_model"></span> batted balls, we scored what fans said about the batter in the ~2 minutes after, split by own fans, opponents and neutrals.</li>
-  <li><b>Check hindsight:</b> postgame "we knew it" claims against what fans actually predicted live, and the real win probability.</li>
-</ul>
-<div class="key" id="keypoint"></div>
-<p class="down small muted">A case study of one game, not a claim about all fans. <a href="#how">How this was done ↓</a></p>
+<!-- ============ HERO (first screen) ============ -->
+<section class="hero">
+  <div class="kicker">2025 World Series · Game 1 · Dodgers 4 @ Blue Jays 11</div>
+  <h1>Judged by Results</h1>
+  <p class="lede">When a batter hits the ball, do fans judge <b>how well he hit it</b>, or <b>whether it fell for a hit</b>? And afterwards, do they claim they "knew it all along"?</p>
+  <ul class="tight">
+    <li><b>Separate skill from luck:</b> Statcast's <b>xBA</b> gives every batted ball's chance of becoming a hit from its speed and angle, whatever actually happened.</li>
+    <li><b>Read the crowd:</b> <span data-k="n_comments"></span> Reddit comments from both fanbases. For <span data-k="n_bip_model"></span> balls in play, we scored what fans said about the batter in the ~2 minutes after.</li>
+    <li><b>Compare like with like:</b> a hit and an out with the same xBA. If fans react differently, they are judging the result.</li>
+    <li><b>Check hindsight:</b> postgame "we knew it" claims against what fans actually predicted live.</li>
+  </ul>
+  <div class="key">
+    <div id="keyline"></div>
+    <div class="chips">
+      <div class="chip"><div class="n" data-count="hit"></div><div class="l">change in own fans' mood from a <b>hit</b>, at the same contact quality (−1…+1 scale)</div></div>
+      <div class="chip"><div class="n" data-count="xba"></div><div class="l">change from hitting the ball <b>well</b> (xBA 0 → 1), at the same result: no measurable effect</div></div>
+      <div class="chip"><div class="n" id="chipLuck"></div><div class="l">reactions to hard-hit outs that mentioned <b>luck or contact</b></div></div>
+    </div>
+  </div>
+  <div class="card reveal" style="margin-top:14px">
+    <div class="small muted" style="margin-bottom:4px"><b style="color:var(--ink)">Every ball in play,</b> placed by how well it was hit. Hits on top, outs below: lucky hits sit far left, unlucky outs far right. Hover or click a dot.</div>
+    <div id="strip"></div>
+  </div>
+  <a class="cue" href="#night">Scroll for the story <span>↓</span></a> &nbsp;·&nbsp; <a class="cue" href="#how">Skip to how it was done</a>
+</section>
 
-<!-- ============ DATA ============ -->
-<h2>The data</h2>
-<div class="grid g3" id="datatiles"></div>
-<ul class="tight small muted" style="margin-top:10px">
-  <li>Comments were collected for the earlier <code>mlb-fan-live</code> project: the game and postgame threads of r/baseball (split by team flair), r/Dodgers and r/Torontobluejays. No new collection.</li>
-  <li>Each comment already had a sentiment score and a "who is this about" tag from Jev, an LLM tagger, plus a free RoBERTa score as a cross-check. <a href="#how-method">Method ↓</a></li>
-  <li>xBA comes from Statcast via Baseball Savant. The reaction window starts 15 s after the play, because fans react 15–20 s late, and ends when ~90% of the reaction is in. <a href="#how-window">Why ↓</a></li>
-</ul>
+<!-- ============ THE NIGHT (data) ============ -->
+<section id="night">
+  <div class="chapter">The data</div>
+  <h2>One night, two fanbases, 52,872 comments</h2>
+  <div class="grid g3 reveal" id="datatiles"></div>
+  <div class="split reveal" style="margin-top:14px">
+    <div class="card"><div id="wpchart"></div><div id="volchart"></div></div>
+    <div class="legend card">
+      <div><span class="sw line" style="background:var(--wp)"></span><b>Toronto's win probability</b> after every play (MLB Stats API).</div>
+      <div><span class="sw" style="background:var(--out)"></span><b>Comments per minute</b> across all six threads.</div>
+      <div>The game was close until the bottom of the 6th, when Toronto scored 9 runs, including a pinch-hit grand slam, and the threads erupted.</div>
+    </div>
+  </div>
+  <ul class="tight small muted" style="margin-top:10px">
+    <li><b>Comments:</b> the game and postgame threads of r/baseball (split by team flair), r/Dodgers and r/Torontobluejays, collected by the earlier <code>mlb-fan-live</code> project. No new collection.</li>
+    <li><b>Mood and subject:</b> each comment's sentiment (−1…+1) and who it's about come from Jev, an LLM tagger. A free RoBERTa model is used as a cross-check. <a href="#how-method">Method ↓</a></li>
+    <li><b>Batted balls:</b> xBA, exit velocity and launch angle from Statcast via Baseball Savant, joined to every play's timing. <a href="#how-window">Reaction window ↓</a></li>
+  </ul>
+</section>
 
-<h3>Same game, two balls</h3>
-<div class="grid g2" id="hook"></div>
+<!-- ============ TWO BALLS ============ -->
+<section>
+  <div class="chapter">Same game, two balls</div>
+  <h2>One was hit hard and caught. One was hit soft and fell in.</h2>
+  <div class="grid g2" id="hook"></div>
+</section>
 
 <!-- ============ RESULT 1 ============ -->
-<h2>Result 1: fans grade the result, not the contact</h2>
-<div class="split">
-  <div>
-    <div class="scroll"><table class="matrix" id="matrix"></table></div>
-    <p class="small muted">Click any cell to see the batted balls behind it.</p>
+<section>
+  <div class="chapter">Result 1</div>
+  <h2>Own fans boo every out and cheer every hit, whatever the contact</h2>
+  <div class="split reveal">
+    <div><div class="scroll"><table class="matrix" id="matrix"></table></div>
+      <p class="small muted">Click any cell to see the batted balls and comments behind it.</p></div>
+    <div class="legend card">
+      <div><b>How to read it</b></div>
+      <div>Each cell is the average sentiment toward the batter after those plays, from −1 (furious) to +1 (thrilled). The bar grows from 0.</div>
+      <div><span class="sw" style="background:var(--tor)"></span>positive &nbsp;<span class="sw" style="background:var(--out)"></span>negative</div>
+      <div><b>Unlucky out:</b> out with xBA ≥ <span data-k="th_out"></span>.<br><b>Lucky hit:</b> hit with xBA ≤ <span data-k="th_hit"></span>.</div>
+      <div>If fans judged contact, unlucky outs would look like hits and lucky hits like outs. They don't.</div>
+    </div>
   </div>
-  <div class="legend card">
-    <div><b>How to read it</b></div>
-    <div>Each cell is the mean sentiment toward the batter in comments after those plays, from −1 (very negative) to +1 (very positive). The bar starts at 0.</div>
-    <div><span class="sw" style="background:var(--pos)"></span>positive &nbsp;<span class="sw" style="background:var(--neg)"></span>negative</div>
-    <div><b>Unlucky out:</b> out with xBA ≥ <span data-k="th_out"></span> (hit well, caught).<br><b>Lucky hit:</b> hit with xBA ≤ <span data-k="th_hit"></span> (hit poorly, fell in).</div>
-    <div>If fans judged contact, unlucky outs would look like ordinary hits, and lucky hits like ordinary outs. Instead every out is negative and every hit positive.</div>
-  </div>
-</div>
-<ul class="tight" id="r1notes"></ul>
+  <ul class="tight" id="r1notes"></ul>
+</section>
 
 <!-- ============ RESULT 2 ============ -->
-<h2>Result 2: the model, holding contact quality fixed</h2>
-<div class="grid g3" id="modeltiles"></div>
-<ul class="tight" id="r2notes"></ul>
-
-<h3>Every batted ball: how well it was hit vs how own fans reacted</h3>
-<div class="split">
-  <div class="card"><div id="scatter"></div></div>
-  <div class="legend card">
-    <div><span class="sw" style="background:var(--s1)"></span>Hit</div>
-    <div><span class="sw" style="background:var(--s2)"></span>Out</div>
-    <div>Each dot is one batted ball. Left to right is how well it was hit (xBA), and up is how the batter's own fans felt about him afterwards.</div>
-    <div>If fans judged contact, blue and orange would mix along a rising line. Instead they split <b>top and bottom</b>.</div>
-    <div>Hover for details; click for comments.</div>
+<section>
+  <div class="chapter">Result 2</div>
+  <h2>Hold contact quality fixed, and only the result matters</h2>
+  <div class="grid g3 reveal" id="modeltiles"></div>
+  <h3>Every batted ball, by fanbase</h3>
+  <div class="split reveal">
+    <div class="grid g3" id="multiples"></div>
+    <div class="legend card">
+      <div><span class="sw" style="background:var(--hit)"></span>Hit &nbsp; <span class="sw" style="background:var(--out)"></span>Out</div>
+      <div>Each dot is one ball. Left to right is how well it was hit (xBA), up is how those fans felt about the batter.</div>
+      <div>If fans judged contact, dots would rise from left to right. Instead they split <b>by colour</b>: own fans lift every hit and sink every out. Opponents mirror it.</div>
+      <div>Hover for details; click for comments.</div>
+    </div>
   </div>
-</div>
+  <ul class="tight" id="r2notes"></ul>
+  <h3>Does it hold up? Nine ways of running it</h3>
+  <div class="split reveal">
+    <div class="card"><div id="forest"></div></div>
+    <div class="legend card">
+      <div><span class="sw" style="background:var(--hit)"></span><b>Hit effect</b> (result)</div>
+      <div><span class="sw" style="background:var(--out)"></span><b>xBA effect</b> (contact quality)</div>
+      <div>Dots are estimates, lines are 95% confidence intervals. Anything crossing the zero line can't be told apart from no effect.</div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ RESULT 3 ============ -->
-<h2>Result 3: hardly anyone notices luck</h2>
-<div class="split">
-  <div class="card" id="awareness"></div>
-  <div class="legend card">
-    <div>Share of comments about the batter that mention contact quality or luck: "smoked", "right at him", "bloop", "unlucky", "found a hole" and <span data-k="n_phrases"></span> phrases in all.</div>
-    <div>The phrase list was fixed before any results were seen. <a href="#how-method">List ↓</a></div>
+<section>
+  <div class="chapter">Result 3</div>
+  <h2>Nobody talks about luck</h2>
+  <div class="split reveal">
+    <div class="card">
+      <div class="big" id="luckBig"></div>
+      <div class="muted" style="margin-bottom:14px">reactions to hard-hit outs mentioned how well the ball was hit, or bad luck</div>
+      <div class="grid g2">
+        <div><div class="small" style="font-weight:700;margin-bottom:4px">What fans wrote instead</div><div id="hype"></div></div>
+        <div><div class="small" style="font-weight:700;margin-bottom:4px">Luck and contact words</div><div id="luckwords"></div></div>
+      </div>
+    </div>
+    <div class="legend card">
+      <div>Counts of comments about the batter, in the reaction window, containing each word (<span data-k="n_words"></span> comments in all). Both bar sets use the same scale.</div>
+      <div><span class="sw" style="background:var(--out)"></span>excitement and swearing &nbsp; <span class="sw" style="background:var(--hit)"></span>luck / contact phrases</div>
+      <div>The luck phrase list (<span data-k="n_phrases"></span> phrases) was fixed before any results were seen. <a href="#how-method">List ↓</a></div>
+    </div>
   </div>
-</div>
-<ul class="tight" id="r3notes"></ul>
+  <ul class="tight" id="r3notes"></ul>
+</section>
 
 <!-- ============ RESULT 4 ============ -->
-<h2>Result 4: "we knew it" — hindsight</h2>
-<div class="split">
-  <div class="card"><div id="timeline"></div></div>
-  <div class="legend card">
-    <div><span class="sw" style="background:var(--s1)"></span><b>Win probability</b> for the eventual winner (Toronto), after every play.</div>
-    <div><span class="sw" style="background:var(--s2)"></span><b>What fans predicted live:</b> share of in-game predictions picking Toronto, in 5-minute bins. Bigger dots mean more predictions.</div>
-    <div><span class="sw" style="background:var(--s3)"></span><b>What they claimed after:</b> postgame claims that the game was decided at that moment.</div>
-    <div>Hover for details.</div>
+<section>
+  <div class="chapter">Result 4</div>
+  <h2>"We knew it": hindsight</h2>
+  <div class="split reveal">
+    <div class="card"><div id="moodchart"></div></div>
+    <div class="legend card">
+      <div><span class="sw line" style="background:var(--tor)"></span><b>Blue Jays fans' mood</b> about their team</div>
+      <div><span class="sw line" style="background:var(--lad)"></span><b>Dodgers fans' mood</b> about theirs</div>
+      <div>Jev's readings, averaged over 2 minutes, from −1 to +1. The two crowds move in opposite directions on every big play.</div>
+    </div>
   </div>
-</div>
-<ul class="tight" id="r4notes"></ul>
-<div id="hindsightTiles" class="grid g3" style="margin-top:12px"></div>
+  <div class="split reveal" style="margin-top:14px">
+    <div class="card"><div id="timeline"></div></div>
+    <div class="legend card">
+      <div><span class="sw line" style="background:var(--wp)"></span><b>Toronto's win probability</b></div>
+      <div><span class="sw" style="background:var(--out)"></span><b>Live predictions:</b> share picking Toronto, in 5-minute bins. Bigger dots mean more predictions.</div>
+      <div><span class="sw" style="background:var(--claim)"></span><b>Postgame claims</b> that it was decided at that moment.</div>
+    </div>
+  </div>
+  <ul class="tight" id="r4notes"></ul>
+  <div id="hindsightTiles" class="grid g3 reveal" style="margin-top:12px"></div>
+</section>
 
 <!-- ============ HOW ============ -->
 <hr class="how" id="how">
@@ -173,16 +264,16 @@ pre{background:var(--grid);padding:10px 12px;border-radius:8px;overflow-x:auto;f
   <li><b>Sentiment:</b> Jev's comment sentiment (primary, −1…+1). RoBERTa (twitter-roberta-base-sentiment) as a check; the two correlate at r = <span data-k="jev_roberta_r"></span>.</li>
   <li><b>Fanbase:</b> r/Dodgers and LAD-flaired r/baseball users vs r/Torontobluejays and TOR-flaired users; the rest of r/baseball is neutral. "Own fans" means the batter's team's fans.</li>
   <li><b>Model:</b> comment-level least squares, <code>sentiment ~ hit + xBA + |ΔWP| + fanbase + inning bucket + hit×fanbase + xBA×fanbase</code>. 95% CIs from 2,000 resamples of whole batted balls. |ΔWP| is in so that "fans like hits" isn't really "fans like winning". Balls with fewer than 5 attributed comments are dropped (<span data-k="n_thin"></span>).</li>
-  <li><b>Process phrases:</b> <span data-k="phrases" class="small"></span></li>
-  <li><b>Claims:</b> keyword pre-filter, then a local zero-shot NLI model (<code>deberta-v3-base-zeroshot-v2.0</code>) asked "does the writer predict who wins?" (in-game) or "does the writer say the result was obvious or decided early?" (postgame), with the fan's team in the premise so "we" resolves. Moments are mapped to plays by keywords ("grand slam", "pulled Snell") or innings ("after the 6th").</li>
+  <li><b>Luck and contact phrases:</b> <span data-k="phrases" class="small"></span></li>
+  <li><b>Claims:</b> keyword pre-filter, then a local zero-shot NLI model (<code>deberta-v3-base-zeroshot-v2.0</code>) asked "does the writer predict who wins?" (in-game) or "does the writer say the result was obvious or decided early?" (postgame). Which team a prediction backs comes from its wording plus the score when posted ("it's over" backs the leader). Moments are mapped to plays by keywords ("grand slam", "pulled Snell") or innings ("after the 6th").</li>
 </ul>
 
 <h3 id="how-window">Reaction window</h3>
 <p>Measured from <code>mlb-fan-live</code>'s per-stream reaction curves: fans start reacting 15–20 s after a play ends, peak at 40–110 s, and 90% of the reaction is in by 135–160 s. So the window is [play end + 15 s, that stream's 90% point], cut 15 s after the next play ends so reactions to the next play don't leak in. Median window: <span data-k="window_median"></span> s.</p>
 
-<h3>Robustness: does it hold?</h3>
+<h3>Robustness table</h3>
 <div class="scroll"><table class="t" id="robust"></table></div>
-<p class="small muted">Own-fan effects, each with a 95% CI. "Hit" is the effect of a hit vs an out at the same xBA. "xBA" is the effect of going from xBA 0 to 1 with the result held fixed.</p>
+<p class="small muted">Own-fan effects with 95% CIs. "Hit" is a hit vs an out at the same xBA. "xBA" is going from xBA 0 to 1 with the result held fixed.</p>
 
 <h3>Pitchers</h3>
 <p id="pitcher"></p>
@@ -201,11 +292,11 @@ pre{background:var(--grid);padding:10px 12px;border-radius:8px;overflow-x:auto;f
 <h3>Limits</h3>
 <ul class="tight">
   <li><b>One game, and a blowout.</b> The game was decided in the bottom of the 6th, when Toronto's win probability went from about 0.5 to 0.99, so most late claims are simply correct. Real hindsight can only show in claims about earlier moments, and there are few of them.</li>
-  <li><b>Small samples.</b> <span data-k="n_bip_model"></span> batted balls, of which only <span data-k="n_unlucky"></span> are unlucky outs and <span data-k="n_lucky"></span> lucky hits. The CIs are wide, and the 2×2 cells for rare categories rest on 3–6 plays.</li>
+  <li><b>Small samples.</b> <span data-k="n_bip_model"></span> batted balls, of which only <span data-k="n_unlucky"></span> are unlucky outs and <span data-k="n_lucky"></span> lucky hits. The CIs are wide, and the cells for rare categories rest on 3–6 plays.</li>
   <li><b>Reddit users aren't all fans,</b> and the loudest threads dominate. Comment-level results weight busy plays more; the per-ball row of the robustness table counts each ball once.</li>
-  <li><b>The classifiers are imperfect.</b> Sentiment and "who it's about" come from an LLM tagger (Jev) and a local NLI model, with no hand-labelled ground truth beyond the spot-check below. The LLM second opinion for claims hasn't been run yet.</li>
+  <li><b>The classifiers are imperfect.</b> Sentiment and "who it's about" come from an LLM tagger (Jev) and a local NLI model, checked only by the small hand spot-check above. The LLM second opinion for claims hasn't been run.</li>
   <li><b>xBA is itself a model.</b> It ignores sprint speed and where fielders stood.</li>
-  <li><b>Internal prototype only.</b> This uses Reddit data; any client use needs licensing or legal sign-off. Only aggregates and short trimmed excerpts appear here, with no usernames.</li>
+  <li><b>Internal prototype.</b> Uses Reddit data; any client use needs licensing or legal sign-off. Only aggregates and short trimmed excerpts appear here, with no usernames.</li>
 </ul>
 
 <h3>Reproduce</h3>
@@ -235,43 +326,170 @@ const f2 = x => x == null ? '–' : Math.abs(x) < 0.005 ? '0.00' : (x > 0 ? '+' 
 const pct = x => x == null ? '–' : Math.round(x * 100) + '%';
 const ci = e => `[${f2(e.lo)}, ${f2(e.hi)}]`;
 const CAT = {unlucky_out: 'Unlucky out', expected_out: 'Ordinary out', lucky_hit: 'Lucky hit', expected_hit: 'Ordinary hit'};
-const FB = {own: "Batter's own fans", opponent: 'Opponent fans', neutral: 'Neutral'};
+const FB = {own: "Batter's own fans", opponent: 'Opponent fans', neutral: 'Neutral fans'};
+const HITS = ['single', 'double', 'triple', 'home_run'];
+const isHit = b => HITS.includes(b.event);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.querySelectorAll('[data-k]').forEach(el => { const v = D.k[el.dataset.k]; if (v != null) el.textContent = v; });
-$('#keypoint').innerHTML = D.keypoint;
+$('#keyline').innerHTML = D.keypoint;
+const H = D.headline;
+$('#chipLuck').textContent = `${H.unlucky.n_process} / ${H.unlucky.n}`;
+$('#luckBig').textContent = `${H.unlucky.n_process} of ${H.unlucky.n}`;
 
-// ---- data tiles
-$('#datatiles').innerHTML = D.tiles.map(t => `<div class="card"><div class="big">${esc(t.big)}</div>
-  <div><b>${esc(t.title)}</b></div><div class="small muted">${esc(t.sub)}</div></div>`).join('');
+// ---------- reveal on scroll
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); e.target.dispatchEvent(new Event('reveal')); io.unobserve(e.target); } }), {threshold: .15});
+function watch(node, fn) { node.classList.add('reveal'); if (fn) node.addEventListener('reveal', fn, {once: true}); io.observe(node); }
+document.querySelectorAll('.reveal').forEach(n => io.observe(n));
 
-// ---- tooltip + dialog
+// ---------- counters
+function countUp(el, target, fmt, ms = 1200) {
+  if (RM) { el.textContent = fmt(target); return; }
+  const t0 = performance.now();
+  const step = t => { const k = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(target * e); if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+countUp(document.querySelector('[data-count="hit"]'), H.hit.est, f2);
+countUp(document.querySelector('[data-count="xba"]'), H.xba.est, f2);
+
+// ---------- tooltip + dialog
 const tip = $('#tip');
 function showTip(e, html) { tip.innerHTML = html; tip.style.display = 'block';
   const x = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8), y = Math.min(e.clientY + 14, innerHeight - tip.offsetHeight - 8);
   tip.style.left = x + 'px'; tip.style.top = y + 'px'; }
 const hideTip = () => tip.style.display = 'none';
 function openDlg(html) { $('#dlgBody').innerHTML = html; $('#dlg').showModal(); }
-
 function ballRow(b, fb = 'own') {
   return `<tr><td>${esc(b.inning)} ${esc(b.half)}</td><td><b>${esc(b.batter)}</b> <span class="small muted">${esc(b.batter_team)}</span><br>
   <span class="small muted">${esc(b.description)}</span>${b.excerpts.length ? `<br><span class="small">“${esc(b.excerpts[0])}”<br>“${esc(b.excerpts[1])}”</span>` : ''}</td>
   <td class="num">${b.xba == null ? '–' : b.xba.toFixed(3)}</td><td class="num">${b.launch_speed == null ? '–' : Math.round(b.launch_speed)}</td>
   <td class="num">${f2(b.mean[fb])}</td><td class="num">${b.n[fb]}</td></tr>`;
 }
-function ballsDialog(title, balls, fb = 'own', note = '') {
-  openDlg(`<h3 style="margin-top:0">${esc(title)}</h3>${note}<div class="scroll"><table class="t"><tr><th>Inn</th><th>Batter and play <span class="small muted">(own-fan excerpts: most positive, most negative)</span></th>
+function ballsDialog(title, balls, fb = 'own') {
+  openDlg(`<h3 style="margin-top:0">${esc(title)}</h3><div class="scroll"><table class="t"><tr><th>Inn</th><th>Batter and play <span class="small muted">(own-fan excerpts: most positive, most negative)</span></th>
   <th class="num">xBA</th><th class="num">mph</th><th class="num">${esc(FB[fb])}</th><th class="num">n</th></tr>${balls.map(b => ballRow(b, fb)).join('')}</table></div>`);
 }
+const ballTip = (b, fb = 'own') => `<b>${esc(b.batter)}</b> · ${esc(b.inning)} ${esc(b.half)}<br>${esc(b.event.replace(/_/g, ' '))} · xBA ${b.xba.toFixed(3)} · ${Math.round(b.launch_speed)} mph` +
+  (b.mean[fb] != null ? `<br>${esc(FB[fb])}: ${f2(b.mean[fb])} (${b.n[fb]} comments)` : '');
 
-// ---- hook
-$('#hook').innerHTML = D.hook.map(h => `<div class="card ball"><span class="tag">${esc(h.label)}</span>
-  <h3 style="margin-top:8px">${esc(h.batter)}, ${esc(h.inning)} ${esc(h.half)}: ${esc(h.result)}</h3>
+// ---------- svg helpers
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function txt(parent, x, y, s, attrs = {}) { const t = el('text', {x, y, ...attrs}, parent); t.textContent = s; return t; }
+function gridY(svg, y, ticks, x0, x1, fmt) { for (const t of ticks) { el('line', {x1: x0, x2: x1, y1: y(t), y2: y(t), stroke: 'var(--grid)'}, svg); txt(svg, x0 - 6, y(t) + 4, fmt(t), {'text-anchor': 'end'}); } }
+function drawIn(path) { if (RM) return; const L = path.getTotalLength(); path.style.strokeDasharray = L; path.style.strokeDashoffset = L; path.classList.add('draw'); }
+function hit(g, cx, cy, r = 12) { el('circle', {cx, cy, r, fill: 'transparent'}, g); }
+const BALLS = D.balls.filter(b => b.xba != null);
+
+// shared game-time scale
+const WP = D.timeline.wp, T0 = new Date(WP[0].t).getTime() - 6 * 60e3, T1 = new Date(WP[WP.length - 1].t).getTime() + 6 * 60e3;
+function timeAxis(svg, x, y0, m, W) {
+  const seen = new Set();
+  for (const p of WP) { if (p.half !== 'top' || seen.has(p.inning)) continue; seen.add(p.inning);
+    el('line', {x1: x(p.t), x2: x(p.t), y1: m.t, y2: y0, stroke: 'var(--grid)', 'stroke-dasharray': '2 3'}, svg);
+    txt(svg, x(p.t) + 4, y0 + 14, p.inning, {}); }
+}
+function sixthBand(svg, x, top, bottom) {
+  const b6 = WP.filter(p => p.inning === 6 && p.half === 'bottom'); if (!b6.length) return;
+  const x0 = x(new Date(new Date(b6[0].t).getTime() - 90e3)), x1 = x(b6[b6.length - 1].t);
+  el('rect', {x: x0, y: top, width: x1 - x0, height: bottom - top, fill: 'var(--hl)', opacity: .55}, svg);
+}
+
+// ---------- hero strip
+(function () {
+  const W = 1000, Hh = 170, m = {l: 46, r: 16, t: 14, b: 32};
+  const svg = el('svg', {viewBox: `0 0 ${W} ${Hh}`, width: '100%', role: 'img', 'aria-label': 'Every ball in play by xBA, hits above outs'});
+  const x = v => m.l + v * (W - m.l - m.r), laneY = {hit: 50, out: 112};
+  for (const t of [0, .25, .5, .75, 1]) { el('line', {x1: x(t), x2: x(t), y1: m.t, y2: Hh - m.b, stroke: 'var(--grid)'}, svg); txt(svg, x(t), Hh - 12, t.toFixed(2), {'text-anchor': 'middle'}); }
+  txt(svg, m.l - 8, laneY.hit + 4, 'HIT', {'text-anchor': 'end', class: 'lbl'}); txt(svg, m.l - 8, laneY.out + 4, 'OUT', {'text-anchor': 'end', class: 'lbl'});
+  txt(svg, x(0.625), Hh - 12, 'xBA: how well it was hit →', {'text-anchor': 'middle'});
+  // zones
+  el('rect', {x: x(0), y: laneY.hit - 22, width: x(D.k.th_hit_v) - x(0), height: 44, rx: 8, fill: 'var(--hit)', opacity: .1}, svg);
+  txt(svg, x(0) + 6, laneY.hit - 26, 'lucky hits', {class: 'small'});
+  el('rect', {x: x(D.k.th_out_v), y: laneY.out - 22, width: x(1) - x(D.k.th_out_v), height: 44, rx: 8, fill: 'var(--out)', opacity: .1}, svg);
+  txt(svg, x(1) - 6, laneY.out - 26, 'unlucky outs', {'text-anchor': 'end'});
+  const sorted = [...BALLS].sort((a, b) => a.xba - b.xba), placed = {hit: [], out: []};
+  sorted.forEach((b, i) => {
+    const lane = isHit(b) ? 'hit' : 'out', cx = x(b.xba);
+    let dy = 0; const near = placed[lane].filter(p => Math.abs(p - cx) < 13).length; dy = [0, -12, 12, -24, 24][near % 5]; placed[lane].push(cx);
+    const g = el('g', {style: 'cursor:pointer'}, svg); hit(g, cx, laneY[lane] + dy, 10);
+    const c = el('circle', {cx, cy: laneY[lane] + dy, r: 6.5, fill: `var(--${lane})`, stroke: 'var(--card)', 'stroke-width': 2, class: 'pop', style: `transition-delay:${i * 22}ms`}, g);
+    g.addEventListener('mousemove', e => showTip(e, ballTip(b))); g.addEventListener('mouseleave', hideTip);
+    g.addEventListener('click', () => { hideTip(); ballsDialog(`${b.batter}, ${b.inning} ${b.half}`, [b]); });
+  });
+  $('#strip').appendChild(svg);
+  requestAnimationFrame(() => setTimeout(() => svg.querySelectorAll('.pop').forEach(p => p.classList.add('in')), 200));
+})();
+
+// ---------- data tiles
+$('#datatiles').innerHTML = D.tiles.map(t => `<div class="card"><div class="big">${esc(t.big)}</div>
+  <div><b>${esc(t.title)}</b></div><div class="small muted">${esc(t.sub)}</div></div>`).join('');
+
+// ---------- win probability + volume
+(function () {
+  const W = 760, Hh = 240, m = {l: 44, r: 14, t: 16, b: 26};
+  const x = t => m.l + (new Date(t).getTime() - T0) / (T1 - T0) * (W - m.l - m.r), y = v => m.t + (1 - v) * (Hh - m.t - m.b);
+  const svg = el('svg', {viewBox: `0 0 ${W} ${Hh}`, width: '100%', role: 'img', 'aria-label': "Toronto's win probability over the game"});
+  sixthBand(svg, x, m.t, Hh - m.b);
+  gridY(svg, y, [0, .5, 1], m.l, W - m.r, v => Math.round(v * 100) + '%');
+  timeAxis(svg, x, Hh - m.b, m, W);
+  const path = el('path', {d: WP.map((p, i) => `${i ? 'L' : 'M'}${x(p.t)},${y(p.winner_wp)}`).join(''), fill: 'none', stroke: 'var(--wp)', 'stroke-width': 2}, svg);
+  drawIn(path);
+  const kp = D.game.key_plays, used = [];
+  for (const k of kp) {
+    const cx = x(k.t), cy = y(k.wp);
+    const g = el('g', {}, svg); hit(g, cx, cy);
+    el('circle', {cx, cy, r: 4.5, fill: 'var(--card)', stroke: 'var(--wp)', 'stroke-width': 2}, g);
+    g.addEventListener('mousemove', e => showTip(e, `<b>${esc(k.label)}</b><br>${k.inning} ${k.half} · TOR win prob ${pct(k.wp)}`)); g.addEventListener('mouseleave', hideTip);
+    if (/HR|slam/.test(k.label) && !used.some(u => Math.abs(u - cx) < 70)) { used.push(cx);
+      const up = k.wp < .7; txt(svg, cx, up ? cy - 10 : cy + 18, k.label, {'text-anchor': 'middle', class: 'lbl'}); }
+  }
+  txt(svg, m.l + 4, m.t + 10, "Toronto's chance of winning", {class: 'lbl'});
+  $('#wpchart').appendChild(svg);
+  watch(svg.parentNode, () => { path.style.strokeDashoffset = 0; });
+
+  const V = D.game.volume, Hv = 120, mv = {l: 44, r: 14, t: 18, b: 22};
+  const vmax = Math.max(...V.map(v => v.n)), yv = v => mv.t + (1 - v / vmax) * (Hv - mv.t - mv.b);
+  const sv = el('svg', {viewBox: `0 0 ${W} ${Hv}`, width: '100%', role: 'img', 'aria-label': 'Comments per minute'});
+  sixthBand(sv, x, mv.t, Hv - mv.b);
+  el('line', {x1: m.l, x2: W - m.r, y1: Hv - mv.b, y2: Hv - mv.b, stroke: 'var(--grid)'}, sv);
+  txt(sv, m.l - 6, yv(vmax) + 4, vmax.toLocaleString(), {'text-anchor': 'end'}); txt(sv, m.l - 6, Hv - mv.b + 4, '0', {'text-anchor': 'end'});
+  const area = el('path', {d: `M${x(V[0].t)},${Hv - mv.b}` + V.map(v => `L${x(v.t)},${yv(v.n)}`).join('') + `L${x(V[V.length - 1].t)},${Hv - mv.b}Z`, fill: 'var(--out)', opacity: .75}, sv);
+  const peak = V.reduce((a, b) => b.n > a.n ? b : a);
+  txt(sv, x(peak.t) + 8, yv(peak.n) + 10, `peak: ${peak.n.toLocaleString()} comments in one minute`, {class: 'lbl'});
+  txt(sv, m.l + 4, mv.t - 4, 'Comments per minute', {class: 'lbl'});
+  const hover = el('rect', {x: m.l, y: mv.t, width: W - m.l - m.r, height: Hv - mv.t - mv.b, fill: 'transparent'}, sv);
+  hover.addEventListener('mousemove', e => { const r = sv.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * W;
+    const t = T0 + (px - m.l) / (W - m.l - m.r) * (T1 - T0); const v = V.reduce((a, b) => Math.abs(new Date(b.t) - t) < Math.abs(new Date(a.t) - t) ? b : a);
+    showTip(e, `${new Date(v.t).toISOString().slice(11, 16)} UTC<br><b>${v.n}</b> comments`); });
+  hover.addEventListener('mouseleave', hideTip);
+  $('#volchart').appendChild(sv);
+})();
+
+// ---------- hook cards with gauges
+$('#hook').innerHTML = D.hook.map((h, i) => `<div class="card ball reveal"><span class="tag">${esc(h.label)}</span>
+  <h3>${esc(h.batter)}, ${esc(h.inning)} ${esc(h.half)}: ${esc(h.result)}</h3>
   <div class="small muted">${esc(h.description)}</div>
-  <p><b>${Math.round(h.launch_speed)} mph</b>, xBA <b>${h.xba.toFixed(3)}</b>: ${esc(h.xba_words)}</p>
-  <p>Own fans' sentiment toward him: <b>${f2(h.own_mean)}</b> <span class="small muted">(${h.own_n} comments)</span></p>
+  <div class="gauges"><div id="ring${i}"></div><div>
+    <div class="small muted">Exit velocity</div><div class="bar0" style="height:10px"><i data-w="${Math.min(h.launch_speed / 115, 1) * 100}" style="left:0;width:0;height:10px;background:var(${h.xba > .35 ? '--hit' : '--out'})"></i></div>
+    <div><b>${Math.round(h.launch_speed)} mph</b> <span class="small muted">(${h.launch_speed >= 95 ? 'hard-hit' : 'soft'})</span></div>
+    <div class="small muted" style="margin-top:4px">${esc(h.xba_words)}</div></div></div>
+  <p>Own fans' mood toward him: <b style="font-size:20px">${f2(h.own_mean)}</b> <span class="small muted">(${h.own_n} comments)</span></p>
   ${h.excerpt ? `<p class="q">“${esc(h.excerpt)}”</p>` : ''}</div>`).join('');
+D.hook.forEach((h, i) => {
+  const s = 92, r = 36, c = 2 * Math.PI * r, svg = el('svg', {viewBox: `0 0 ${s} ${s}`, width: s, height: s, role: 'img', 'aria-label': `xBA ${h.xba}`});
+  el('circle', {cx: s / 2, cy: s / 2, r, fill: 'none', stroke: 'var(--grid)', 'stroke-width': 9}, svg);
+  const arc = el('circle', {cx: s / 2, cy: s / 2, r, fill: 'none', stroke: `var(${h.xba > .35 ? '--hit' : '--out'})`, 'stroke-width': 9, 'stroke-linecap': 'round',
+    'stroke-dasharray': `${c}`, 'stroke-dashoffset': RM ? c * (1 - h.xba) : c, transform: `rotate(-90 ${s / 2} ${s / 2})`, class: 'draw'}, svg);
+  txt(svg, s / 2, s / 2 + 2, pct(h.xba), {'text-anchor': 'middle', class: 'lbl', style: 'font-size:17px'});
+  txt(svg, s / 2, s / 2 + 17, 'xBA', {'text-anchor': 'middle', style: 'font-size:10px'});
+  $('#ring' + i).appendChild(svg);
+});
+document.querySelectorAll('#hook .card').forEach((card, i) => { io.observe(card); card.addEventListener('reveal', () => {
+  const h = D.hook[i], arc = card.querySelector('circle.draw'), c = 2 * Math.PI * 36; arc.style.strokeDashoffset = c * (1 - h.xba);
+  card.querySelectorAll('.bar0 i[data-w]').forEach(b => b.style.width = b.dataset.w + '%'); }, {once: true}); });
 
-// ---- matrix
+// ---------- matrix
 (function () {
   const cats = Object.keys(CAT), c = D.contrast;
   let html = '<tr><th></th>' + cats.map(k => `<th>${CAT[k]}</th>`).join('') + '</tr>';
@@ -281,102 +499,152 @@ $('#hook').innerHTML = D.hook.map(h => `<div class="card ball"><span class="tag"
       if (v.mean == null) return '<td class="cell">–</td>';
       const w = Math.min(Math.abs(v.mean), 1) * 50, left = v.mean >= 0 ? 50 : 50 - w;
       return `<td class="cell" tabindex="0" data-fb="${fb}" data-cat="${k}"><div class="v">${f2(v.mean)}</div>
-        <div class="bar0"><s></s><i style="left:${left}%;width:${w}%;background:var(${v.mean >= 0 ? '--pos' : '--neg'})"></i></div>
+        <div class="bar0"><s></s><i data-left="${left}" data-w="${w}" style="left:50%;width:0;background:var(${v.mean >= 0 ? '--tor' : '--out'})"></i></div>
         <div class="ci">95% CI ${ci(v)}</div><div class="n">${v.n} comments · ${v.n_clusters} balls</div></td>`;
     }).join('') + '</tr>';
   }
-  $('#matrix').innerHTML = html;
-  $('#matrix').querySelectorAll('td.cell[data-cat]').forEach(td => {
+  const tbl = $('#matrix'); tbl.innerHTML = html;
+  tbl.querySelectorAll('td.cell[data-cat]').forEach(td => {
     const go = () => { const fb = td.dataset.fb, k = td.dataset.cat;
-      const balls = D.balls.filter(b => b.luck_category === k && !b.thin && b.n[fb] > 0);
-      ballsDialog(`${CAT[k]}s — ${FB[fb]}`, balls, fb); };
+      ballsDialog(`${CAT[k]}s — ${FB[fb]}`, D.balls.filter(b => b.luck_category === k && !b.thin && b.n[fb] > 0), fb); };
     td.onclick = go; td.onkeydown = e => { if (e.key === 'Enter') go(); };
   });
+  const box = tbl.closest('.reveal');
+  box.addEventListener('reveal', () => tbl.querySelectorAll('.bar0 i').forEach(i => { i.style.left = i.dataset.left + '%'; i.style.width = i.dataset.w + '%'; }), {once: true});
 })();
 $('#r1notes').innerHTML = D.notes.r1.map(n => `<li>${n}</li>`).join('');
 
-// ---- model tiles
+// ---------- model tiles
 $('#modeltiles').innerHTML = D.modeltiles.map(t => `<div class="card"><div class="small muted">${esc(t.title)}</div>
   <div class="big">${esc(t.big)}</div><div class="small muted">${esc(t.sub)}</div></div>`).join('');
 $('#r2notes').innerHTML = D.notes.r2.map(n => `<li>${n}</li>`).join('');
 
-// ---- svg helpers
-const NS = 'http://www.w3.org/2000/svg';
-function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
-function axisY(svg, y, ticks, x0, x1, fmt) {
-  for (const t of ticks) { el('line', {x1: x0, x2: x1, y1: y(t), y2: y(t), stroke: 'var(--grid)', 'stroke-width': 1}, svg);
-    const tx = el('text', {x: x0 - 6, y: y(t) + 4, 'text-anchor': 'end'}, svg); tx.textContent = fmt(t); }
-}
-
-// ---- scatter
+// ---------- small multiples
 (function () {
-  const W = 640, H = 380, m = {l: 58, r: 14, t: 12, b: 42};
-  const svg = el('svg', {viewBox: `0 0 ${W} ${H}`, width: '100%', role: 'img', 'aria-label': 'Scatter of xBA vs own-fan sentiment per batted ball'});
-  const x = v => m.l + v * (W - m.l - m.r), y = v => m.t + (1 - v) / 2 * (H - m.t - m.b);
-  axisY(svg, y, [-1, -0.5, 0, 0.5, 1], m.l, W - m.r, f2);
-  el('line', {x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: 'var(--ink3)', 'stroke-width': 1}, svg);
-  for (const t of [0, 0.25, 0.5, 0.75, 1]) { const tx = el('text', {x: x(t), y: H - m.b + 16, 'text-anchor': 'middle'}, svg); tx.textContent = t.toFixed(2); }
-  const xl = el('text', {x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle'}, svg); xl.textContent = 'xBA: how well the ball was hit (chance it becomes a hit) →';
-  const yl = el('text', {x: 12, y: (m.t + H - m.b) / 2, 'text-anchor': 'middle', transform: `rotate(-90 12 ${(m.t + H - m.b) / 2})`}, svg); yl.textContent = 'Own-fan sentiment →';
-  const balls = D.balls.filter(b => !b.thin && b.xba != null && b.mean.own != null);
-  for (const b of balls) {
-    const g = el('g', {style: 'cursor:pointer'}, svg);
-    el('circle', {cx: x(b.xba), cy: y(b.mean.own), r: 14, fill: 'transparent'}, g);
-    el('circle', {cx: x(b.xba), cy: y(b.mean.own), r: 6, fill: b.event && ['single','double','triple','home_run'].includes(b.event) ? 'var(--s1)' : 'var(--s2)', stroke: 'var(--card)', 'stroke-width': 2}, g);
-    g.addEventListener('mousemove', e => showTip(e, `<b>${esc(b.batter)}</b> · ${esc(b.inning)} ${esc(b.half)}<br>${esc(b.event.replace(/_/g, ' '))} · xBA ${b.xba.toFixed(3)} · ${Math.round(b.launch_speed)} mph<br>Own fans ${f2(b.mean.own)} (${b.n.own} comments)`));
-    g.addEventListener('mouseleave', hideTip);
-    g.addEventListener('click', () => { hideTip(); ballsDialog(`${b.batter}, ${b.inning} ${b.half}`, [b], 'own'); });
+  for (const fb of ['own', 'opponent', 'neutral']) {
+    const W = 300, Hh = 270, m = {l: 40, r: 8, t: 26, b: 36};
+    const x = v => m.l + v * (W - m.l - m.r), y = v => m.t + (1 - v) / 2 * (Hh - m.t - m.b);
+    const svg = el('svg', {viewBox: `0 0 ${W} ${Hh}`, width: '100%', role: 'img', 'aria-label': `xBA vs ${FB[fb]} sentiment`});
+    txt(svg, m.l, 14, FB[fb], {class: 'lbl'});
+    gridY(svg, y, [-1, 0, 1], m.l, W - m.r, f2);
+    el('line', {x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: 'var(--ink3)'}, svg);
+    for (const t of [0, .5, 1]) txt(svg, x(t), Hh - m.b + 15, t.toFixed(1), {'text-anchor': 'middle'});
+    txt(svg, (m.l + W - m.r) / 2, Hh - 6, 'xBA →', {'text-anchor': 'middle'});
+    const pts = D.balls.filter(b => !b.thin && b.xba != null && b.mean[fb] != null && b.n[fb] >= 3);
+    pts.forEach((b, i) => {
+      const g = el('g', {style: 'cursor:pointer'}, svg); const cx = x(b.xba), cy = y(Math.max(-1, Math.min(1, b.mean[fb])));
+      hit(g, cx, cy, 10);
+      el('circle', {cx, cy, r: 5, fill: `var(--${isHit(b) ? 'hit' : 'out'})`, stroke: 'var(--card)', 'stroke-width': 1.5, class: 'pop', style: `transition-delay:${i * 15}ms`}, g);
+      g.addEventListener('mousemove', e => showTip(e, ballTip(b, fb))); g.addEventListener('mouseleave', hideTip);
+      g.addEventListener('click', () => { hideTip(); ballsDialog(`${b.batter}, ${b.inning} ${b.half}`, [b], fb); });
+    });
+    const card = document.createElement('div'); card.className = 'card'; card.style.padding = '8px'; card.appendChild(svg);
+    $('#multiples').appendChild(card);
   }
-  $('#scatter').appendChild(svg);
 })();
 
-// ---- awareness
+// ---------- forest plot
 (function () {
-  const a = D.awareness, cats = Object.keys(CAT);
-  const max = Math.max(0.02, ...cats.map(k => a[k].share || 0));
-  $('#awareness').innerHTML = `<div class="big">${a.unlucky_out.n_process} of ${a.unlucky_out.n}</div>
-   <div class="muted">reactions to unlucky outs mentioned contact quality or luck</div>
-   <div style="margin-top:14px">${cats.map(k => `<div style="display:grid;grid-template-columns:110px 1fr 90px;gap:8px;align-items:center;margin:6px 0">
-     <span class="small">${CAT[k]}</span><div class="bar0" style="margin:0"><i style="left:0;width:${(a[k].share || 0) / max * 100}%;background:var(--s1)"></i></div>
-     <span class="small num">${pct(a[k].share)} (${a[k].n_process}/${a[k].n})</span></div>`).join('')}</div>`;
+  const R = D.robustness, W = 760, row = 30, m = {l: 230, r: 16, t: 26, b: 30}, Hh = m.t + R.length * row + m.b;
+  const lo = Math.min(-0.4, ...R.flatMap(r => [r.hit.lo, r.xba.lo])), hi = Math.max(1.2, ...R.flatMap(r => [r.hit.hi, r.xba.hi]));
+  const x = v => m.l + (v - lo) / (hi - lo) * (W - m.l - m.r);
+  const svg = el('svg', {viewBox: `0 0 ${W} ${Hh}`, width: '100%', role: 'img', 'aria-label': 'Robustness: hit and xBA effects with confidence intervals'});
+  for (const t of [-0.5, 0, 0.5, 1]) { if (t < lo || t > hi) continue;
+    el('line', {x1: x(t), x2: x(t), y1: m.t - 6, y2: Hh - m.b, stroke: t === 0 ? 'var(--ink3)' : 'var(--grid)', 'stroke-width': t === 0 ? 1.5 : 1}, svg);
+    txt(svg, x(t), Hh - m.b + 16, f2(t), {'text-anchor': 'middle'}); }
+  txt(svg, x(0), m.t - 10, 'no effect', {'text-anchor': 'middle'});
+  R.forEach((r, i) => {
+    const cy = m.t + i * row + row / 2;
+    txt(svg, m.l - 10, cy + 4, r.name, {'text-anchor': 'end', class: i === 0 ? 'lbl' : ''});
+    [['hit', -5, 'var(--hit)'], ['xba', 5, 'var(--out)']].forEach(([k, dy, col]) => {
+      const e = r[k], g = el('g', {class: 'pop', style: `transition-delay:${i * 60}ms`}, svg);
+      el('line', {x1: x(e.lo), x2: x(e.hi), y1: cy + dy, y2: cy + dy, stroke: col, 'stroke-width': 2.5, 'stroke-linecap': 'round'}, g);
+      el('circle', {cx: x(e.est), cy: cy + dy, r: 4.5, fill: col, stroke: 'var(--card)', 'stroke-width': 1.5}, g);
+      hit(g, x(e.est), cy + dy, 10);
+      g.addEventListener('mousemove', ev => showTip(ev, `<b>${esc(r.name)}</b><br>${k === 'hit' ? 'Hit' : 'xBA'} effect ${f2(e.est)} ${ci(e)}<br>${r.n_bip} balls`)); g.addEventListener('mouseleave', hideTip);
+    });
+  });
+  $('#forest').appendChild(svg);
+  watch($('#forest').parentNode, () => svg.querySelectorAll('.pop').forEach(p => p.classList.add('in')));
+})();
+document.querySelectorAll('#multiples').forEach(n => n.closest('.reveal').addEventListener('reveal', () => n.querySelectorAll('.pop').forEach(p => p.classList.add('in')), {once: true}));
+
+// ---------- words
+(function () {
+  const Wd = D.words, max = Math.max(...Wd.hype.map(w => w.n), ...Wd.process.map(w => w.n), 1);
+  const row = (w, cls) => `<div class="wrow"><span>${esc(w.word)}</span><div class="wbar ${cls}" data-w="${w.n / max * 100}"></div><span class="num">${w.n}</span></div>`;
+  $('#hype').innerHTML = Wd.hype.map(w => row(w, '')).join('');
+  const lw = Wd.process.filter(w => w.n > 0);
+  $('#luckwords').innerHTML = lw.map(w => row(w, 'luck')).join('') +
+    `<div class="small muted" style="margin-top:6px">${Wd.process.length - lw.length} more phrases appeared 0 times. Any luck/contact phrase at all: <b>${Wd.process_any}</b> of ${Wd.n_comments.toLocaleString()} comments.</div>`;
+  $('#hype').closest('.reveal').addEventListener('reveal', () => {
+    document.querySelectorAll('.wbar').forEach(b => b.style.width = b.dataset.w + '%');
+    countUp($('#luckBig'), H.unlucky.n_process, v => `${Math.round(v)} of ${H.unlucky.n}`, 600);
+  }, {once: true});
 })();
 $('#r3notes').innerHTML = D.notes.r3.map(n => `<li>${n}</li>`).join('');
 
-// ---- timeline
+// ---------- mood chart
 (function () {
-  const T = D.timeline; if (!T.wp.length) return;
-  const W = 640, H = 340, m = {l: 44, r: 14, t: 14, b: 40};
-  const t0 = new Date(T.wp[0].t).getTime() - 5 * 60e3, t1 = new Date(T.wp[T.wp.length - 1].t).getTime() + 5 * 60e3;
-  const x = t => m.l + (new Date(t).getTime() - t0) / (t1 - t0) * (W - m.l - m.r), y = v => m.t + (1 - v) * (H - m.t - m.b);
-  const svg = el('svg', {viewBox: `0 0 ${W} ${H}`, width: '100%', role: 'img', 'aria-label': 'Win probability, live predictions and postgame claims over the game'});
-  axisY(svg, y, [0, 0.25, 0.5, 0.75, 1], m.l, W - m.r, v => Math.round(v * 100) + '%');
-  // inning marks
-  const seen = new Set();
-  for (const p of T.wp) { if (p.half !== 'top' || seen.has(p.inning)) continue; seen.add(p.inning);
-    const tx = el('text', {x: x(p.t), y: H - m.b + 16, 'text-anchor': 'middle'}, svg); tx.textContent = p.inning; }
-  const xl = el('text', {x: (m.l + W - m.r) / 2, y: H - 6, 'text-anchor': 'middle'}, svg); xl.textContent = 'Inning (game time) →';
-  el('path', {d: T.wp.map((p, i) => `${i ? 'L' : 'M'}${x(p.t)},${y(p.winner_wp)}`).join(''), fill: 'none', stroke: 'var(--s1)', 'stroke-width': 2}, svg);
-  const maxn = Math.max(1, ...T.belief.map(b => b.n));
+  const M = D.game.mood, W = 760, Hh = 260, m = {l: 44, r: 14, t: 18, b: 26};
+  const x = t => m.l + (new Date(t).getTime() - T0) / (T1 - T0) * (W - m.l - m.r), y = v => m.t + (1 - v) / 2 * (Hh - m.t - m.b);
+  const svg = el('svg', {viewBox: `0 0 ${W} ${Hh}`, width: '100%', role: 'img', 'aria-label': 'Fan mood by team over the game'});
+  sixthBand(svg, x, m.t, Hh - m.b);
+  gridY(svg, y, [-1, 0, 1], m.l, W - m.r, f2);
+  el('line', {x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: 'var(--ink3)'}, svg);
+  timeAxis(svg, x, Hh - m.b, m, W);
+  const paths = [];
+  for (const team of ['TOR', 'LAD']) {
+    let d = '', pen = false;
+    for (const p of M) { if (p[team] == null) { pen = false; continue; } d += `${pen ? 'L' : 'M'}${x(p.t)},${y(p[team])}`; pen = true; }
+    const path = el('path', {d, fill: 'none', stroke: `var(--${team.toLowerCase()})`, 'stroke-width': 2, 'stroke-linejoin': 'round'}, svg);
+    drawIn(path); paths.push(path);
+    const last = [...M].reverse().find(p => p[team] != null);
+    txt(svg, x(last.t) - 4, y(last[team]) + (team === 'TOR' ? -8 : 16), team === 'TOR' ? 'Blue Jays fans' : 'Dodgers fans', {'text-anchor': 'end', class: 'lbl'});
+  }
+  const hover = el('rect', {x: m.l, y: m.t, width: W - m.l - m.r, height: Hh - m.t - m.b, fill: 'transparent'}, svg);
+  const cross = el('line', {y1: m.t, y2: Hh - m.b, stroke: 'var(--ink3)', 'stroke-width': 1, visibility: 'hidden'}, svg);
+  hover.addEventListener('mousemove', e => { const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * W;
+    const t = T0 + (px - m.l) / (W - m.l - m.r) * (T1 - T0); const p = M.reduce((a, b) => Math.abs(new Date(b.t) - t) < Math.abs(new Date(a.t) - t) ? b : a);
+    cross.setAttribute('x1', x(p.t)); cross.setAttribute('x2', x(p.t)); cross.setAttribute('visibility', 'visible');
+    const kp = D.game.key_plays.filter(k => Math.abs(new Date(k.t) - new Date(p.t)) < 150e3).map(k => esc(k.label)).join(', ');
+    showTip(e, `${new Date(p.t).toISOString().slice(11, 16)} UTC${kp ? ' · ' + kp : ''}<br>Blue Jays fans <b>${f2(p.TOR)}</b><br>Dodgers fans <b>${f2(p.LAD)}</b>`); });
+  hover.addEventListener('mouseleave', () => { hideTip(); cross.setAttribute('visibility', 'hidden'); });
+  $('#moodchart').appendChild(svg);
+  watch($('#moodchart').parentNode, () => paths.forEach(p => p.style.strokeDashoffset = 0));
+})();
+
+// ---------- predictions + claims timeline
+(function () {
+  const T = D.timeline, W = 760, Hh = 280, m = {l: 44, r: 14, t: 16, b: 26};
+  const x = t => m.l + (new Date(t).getTime() - T0) / (T1 - T0) * (W - m.l - m.r), y = v => m.t + (1 - v) * (Hh - m.t - m.b);
+  const svg = el('svg', {viewBox: `0 0 ${W} ${Hh}`, width: '100%', role: 'img', 'aria-label': 'Win probability, live predictions and postgame claims'});
+  sixthBand(svg, x, m.t, Hh - m.b);
+  gridY(svg, y, [0, .5, 1], m.l, W - m.r, v => Math.round(v * 100) + '%');
+  timeAxis(svg, x, Hh - m.b, m, W);
+  const path = el('path', {d: T.wp.map((p, i) => `${i ? 'L' : 'M'}${x(p.t)},${y(p.winner_wp)}`).join(''), fill: 'none', stroke: 'var(--wp)', 'stroke-width': 2}, svg);
+  drawIn(path);
+  const maxn = Math.max(1, ...T.belief.map(b => b.n)); let i = 0;
   for (const b of T.belief) { if (!b.n) continue;
-    const g = el('g', {}, svg); const cx = x(new Date(new Date(b.t).getTime() + 150e3)), cy = y(b.share_winner);
-    el('circle', {cx, cy, r: 12, fill: 'transparent'}, g);
-    el('circle', {cx, cy, r: 3 + 6 * Math.sqrt(b.n / maxn), fill: 'var(--s2)', 'fill-opacity': .85, stroke: 'var(--card)', 'stroke-width': 2}, g);
+    const g = el('g', {}, svg), cx = x(new Date(new Date(b.t).getTime() + 150e3)), cy = y(b.share_winner); hit(g, cx, cy);
+    el('circle', {cx, cy, r: 3 + 7 * Math.sqrt(b.n / maxn), fill: 'var(--out)', 'fill-opacity': .85, stroke: 'var(--card)', 'stroke-width': 2, class: 'pop', style: `transition-delay:${400 + i++ * 25}ms`}, g);
     g.addEventListener('mousemove', e => showTip(e, `Live predictions, 5 min from ${new Date(b.t).toISOString().slice(11, 16)} UTC<br><b>${pct(b.share_winner)}</b> picked Toronto (n = ${b.n})`));
     g.addEventListener('mouseleave', hideTip); }
   for (const c of T.claims) {
-    const g = el('g', {}, svg); const cx = x(c.t), cy = y(c.share_winner);
-    el('circle', {cx, cy, r: 14, fill: 'transparent'}, g);
-    el('rect', {x: cx - 6, y: cy - 6, width: 12, height: 12, rx: 2, fill: 'var(--s3)', stroke: 'var(--card)', 'stroke-width': 2, transform: `rotate(45 ${cx} ${cy})`}, g);
-    g.addEventListener('mousemove', e => showTip(e, `<b>${c.n}</b> postgame claim(s) that it was decided here<br>${esc(c.label)}<br>${pct(c.share_winner)} said Toronto was always winning`));
-    g.addEventListener('mouseleave', hideTip); }
+    const g = el('g', {}, svg), cx = x(c.t), cy = y(c.share_winner); hit(g, cx, cy, 14);
+    el('rect', {x: cx - 6, y: cy - 6, width: 12, height: 12, rx: 2, fill: 'var(--claim)', stroke: 'var(--card)', 'stroke-width': 2, transform: `rotate(45 ${cx} ${cy})`}, g);
+    g.addEventListener('mousemove', e => showTip(e, `<b>${c.n}</b> postgame claim(s) that it was decided here<br>${esc(c.label)}`)); g.addEventListener('mouseleave', hideTip); }
+  const b6 = T.wp.filter(p => p.inning === 6 && p.half === 'bottom');
+  if (b6.length) txt(svg, x(b6[0].t) - 6, y(.08), 'the 9-run 6th', {'text-anchor': 'end', class: 'lbl'});
   $('#timeline').appendChild(svg);
+  watch($('#timeline').parentNode, () => { path.style.strokeDashoffset = 0; svg.querySelectorAll('.pop').forEach(p => p.classList.add('in')); });
 })();
 $('#r4notes').innerHTML = D.notes.r4.map(n => `<li>${n}</li>`).join('');
 $('#hindsightTiles').innerHTML = D.hindsight_tiles.map(t => `<div class="card"><div class="small muted">${esc(t.title)}</div>
   <div class="big">${esc(t.big)}</div><div class="small muted">${esc(t.sub)}</div></div>`).join('');
 
-// ---- how: tables
-$('#robust').innerHTML = '<tr><th>Version</th><th class="num">Hit effect</th><th class="num">xBA effect</th><th class="num">Balls</th><th>Hit sign holds?</th></tr>' +
+// ---------- how: tables
+$('#robust').innerHTML = '<tr><th>Version</th><th class="num">Hit effect</th><th class="num">xBA effect</th><th class="num">Balls</th><th>Hit effect clearly positive?</th></tr>' +
   D.robustness.map(r => `<tr><td>${esc(r.name)}</td><td class="num">${f2(r.hit.est)} ${ci(r.hit)}</td><td class="num">${f2(r.xba.est)} ${ci(r.xba)}</td>
   <td class="num">${r.n_bip}</td><td>${r.hit.lo > 0 ? '<span class="ok">yes</span>' : '<span class="bad">CI includes 0</span>'}</td></tr>`).join('');
 $('#pitcher').innerHTML = D.pitcher_text;
