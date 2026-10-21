@@ -1,0 +1,23 @@
+[project]
+name = "jbr"
+version = "0.1.0"
+description = "Judged by Results: outcome bias and hindsight in fan reactions to one game"
+requires-python = ">=3.11"
+dependencies = ["pandas", "pyarrow", "pyyaml", "requests", "pybaseball", "plotly", "duckdb"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+jbr = "jbr.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,181 @@
+# Judged by Results: fixed settings. Change only with a logged reason in
+# reports/decisions_log.md.
+
+game:
+  # Looked up from the MLB Stats API schedule (sportId=1, date=2025-10-24,
+  # gameType=W): LAD @ TOR, World Series Game 1, Final 4-11.
+  game_pk: 813027
+  date: "2025-10-24"
+  home: TOR
+  away: LAD
+
+# Statcast events that count as a ball in play. Strikeouts, walks and HBP are
+# not in play; catcher interference is left out too.
+batted_balls:
+  hits: [single, double, triple, home_run]
+  outs: [field_out, force_out, grounded_into_double_play, double_play, triple_play,
+         sac_fly, sac_bunt, sac_fly_double_play, sac_bunt_double_play]
+  errors: [field_error]
+  fielders_choice: [fielders_choice, fielders_choice_out]
+
+# Phase 0 luck categories (fixed before any comment data is read).
+# README values were 0.50 / 0.25; loosened on 2026-10-21 because they left only
+# 2 unlucky outs, both in garbage time (see reports/decisions_log.md).
+luck:
+  unlucky_out_min_xba: 0.40   # out with xBA >= this
+  lucky_hit_max_xba: 0.30     # hit with xBA <= this
+
+# Phase 1 reaction window (decided 2026-10-21 from data/imported/reaction_lag.json,
+# before any outcome numbers; see reports/decisions_log.md).
+window:
+  start_s: 15                 # reaction starts 15-20 s after a play ends
+  end: stream_tail_lag        # each stream's 90%-arrived lag (135-160 s)
+  next_play_cut_s: 15         # cut at the next play's end + this
+  robustness_lengths_s: [60, 180]
+
+# Phase 1: a comment is a reply about the batter if its parent is.
+attribution:
+  min_comments_per_bip: 5     # batted balls with fewer are flagged
+
+# Phase 1 process-language dictionary: phrases showing a fan noticed contact
+# quality or luck. Fixed before any outcome numbers. Matched case-insensitively
+# on word boundaries.
+process_phrases:
+  - hit it hard
+  - hit hard
+  - hard hit
+  - smoked
+  - barreled
+  - barrelled
+  - crushed
+  - scorched
+  - rocket
+  - laser
+  - squared up
+  - right at him
+  - right at the
+  - unlucky
+  - tough luck
+  - bad luck
+  - lucky
+  - bloop
+  - blooper
+  - duck snort
+  - seeing-eye
+  - seeing eye
+  - found a hole
+  - texas leaguer
+  - flare
+  - dribbler
+  - great contact
+  - good contact
+  - weak contact
+  - soft contact
+  - jammed
+  - off the end of the bat
+  - exit velo
+  - xba
+
+# Phase 3 keyword pre-filters (fixed before classification). Regex, case-insensitive.
+claims:
+  # Each list is joined with "|" and matched as a word-boundary group, case-insensitive.
+  ingame_filter:
+    - "game over"
+    - "it'?s over"
+    - "this is over"
+    - "(it|this|game)('?s| is) (done|finished)"
+    - "we'?re done"
+    - "we are done"
+    - "(we'?re|we are|they'?re|they are) (cooked|toast|finished|winning this|losing this)"
+    - "cooked"
+    - "come ?back"
+    - "coming back"
+    - "we got this"
+    - "got this one"
+    - "we('?ll| will| gonna| going to) (win|lose)"
+    - "gonna (win|lose)"
+    - "going to (win|lose)"
+    - "(win|lose|lost|won) this"
+    - "in the bag"
+    - "no (chance|way we)"
+    - "not over"
+    - "still time"
+    - "plenty of (time|game)"
+    - "believe"
+    - "(game|series) is"
+    - "ballgame"
+    - "ball game"
+    - "blow ?out"
+    - "choke"
+    - "collapse"
+    - "lock(ed)? (it|this) (up|in)"
+    - "put (it|this) away"
+    - "it'?s (done|ours|theirs)"
+    - "can'?t (win|lose|come back)"
+    - "we'?re (winning|losing) this"
+    - "this one'?s (ours|theirs|over)"
+  postgame_filter:
+    - "knew"
+    - "known"
+    - "never had a chance"
+    - "no chance"
+    - "was over"
+    - "it'?s over"
+    - "over (after|when|once|by|from|the moment|as soon)"
+    - "from the (start|jump|beginning)"
+    - "first pitch"
+    - "first inning"
+    - "saw (this|it) coming"
+    - "seen (this|it) coming"
+    - "predictable"
+    - "inevitable"
+    - "called it"
+    - "told (you|y'?all|everyone)"
+    - "obvious"
+    - "as soon as"
+    - "the moment"
+    - "once (snell|barger|the|he|they|we|that|it|kirk|varsho)"
+    - 'after the (\d|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth)'
+    - "doomed"
+    - "felt (it|like)"
+    - "never (in|a) doubt"
+    - "game was"
+    - "was done"
+    - "writing (was )?on the wall"
+    - "sealed"
+    - "decided"
+    - "(sixth|6th) inning"
+    - "grand slam"
+    - 'in the (\d|first|second|third|fourth|fifth|sixth|seventh)'
+    - '\d(st|nd|rd|th) inning'
+  recall_sample: 300          # random unfiltered comments per kind for the missed-positive check
+  nli:
+    model: MoritzLaurer/deberta-v3-base-zeroshot-v2.0
+    positive_min: 0.80        # entailment score to count as a prediction / claim
+    direction_min: 0.50       # entailment score to assign a team
+    certainty_bands: {high: 0.95, mid: 0.88}   # NLI score proxy for confidence/certainty
+  spotcheck_per_kind: 20
+  # Event keywords that name a specific play (case-insensitive regex -> how to find it).
+  moments:
+    - {pattern: "grand slam|barger", find: "grand slam"}
+    - {pattern: "kirk.{0,40}(homer|hr|bomb|home run|dinger)|(homer|hr|bomb|home run|dinger).{0,40}kirk", find: "Alejandro Kirk homers"}
+    - {pattern: "varsho.{0,40}(homer|hr|bomb|home run|dinger)|(homer|hr|bomb|home run|dinger).{0,40}varsho", find: "Daulton Varsho homers"}
+    - {pattern: "ohtani.{0,40}(homer|hr|bomb|home run|dinger)|(homer|hr|bomb|home run|dinger).{0,40}ohtani", find: "Shohei Ohtani homers"}
+    - {pattern: "(pull|took|take|leave|left|keep|kept).{0,30}snell|snell.{0,30}(pulled|out|left in|exit|gone)|pitching change", find: "PITCHING_CHANGE_6"}
+    - {pattern: "first pitch|from the (start|jump|beginning)|first inning|1st inning", find: "FIRST_PLAY"}
+
+# Phase 4
+hindsight:
+  belief_window_min: 10       # in-game predictions in the 10 minutes after a moment
+  early_wp_band: [0.30, 0.70] # winner's WP at the moment: real uncertainty
+  decided_wp_min: 0.90        # winner's WP at the moment: effectively decided
+
+llm:
+  # LLM Foundry (OpenAI-compatible). Not run yet: see "Running with the LLM later"
+  # in the README. Auth header is "Bearer $LLMFOUNDRY_TOKEN:<project>".
+  base_url: https://llmfoundry.straive.com/openai/v1
+  project: judged-by-results
+  model: gpt-4.1-nano
+  price_per_mtok: {input: 0.10, output: 0.40}
+  batch_size: 20
+  daily_cap_usd: 0.80

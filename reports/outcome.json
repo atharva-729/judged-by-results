@@ -1,0 +1,1953 @@
+{
+  "n_bip_total": 50,
+  "n_bip_with_xba": 49,
+  "thin_bip": [
+    "813027-58",
+    "813027-65",
+    "813027-66",
+    "813027-67",
+    "813027-71",
+    "813027-74",
+    "813027-75"
+  ],
+  "main": {
+    "own_hit": {
+      "est": 0.96191690436037,
+      "lo": 0.6240642676639259,
+      "hi": 1.1078509868830877
+    },
+    "own_xba": {
+      "est": 0.15416968699386915,
+      "lo": -0.07890734629326113,
+      "hi": 0.6298818636871519
+    },
+    "opponent_hit": {
+      "est": 0.048617007839759196,
+      "lo": -0.30217005524261137,
+      "hi": 0.4342540893049204
+    },
+    "opponent_xba": {
+      "est": -0.5430525010791275,
+      "lo": -1.1601811458795925,
+      "hi": -0.014728411576031941
+    },
+    "neutral_hit": {
+      "est": 0.4214547015626132,
+      "lo": 0.16639998670411218,
+      "hi": 0.6398045253835912
+    },
+    "neutral_xba": {
+      "est": 0.29417459972408116,
+      "lo": -0.07696956579858812,
+      "hi": 0.7281650387153017
+    },
+    "abs_dwp": {
+      "est": 0.40572214730346756,
+      "lo": -1.3494895059423366,
+      "hi": 2.3832708733467536
+    },
+    "own_ratio": {
+      "est": 6.239338764426644,
+      "lo": -61.188550970266164,
+      "hi": 72.74118791775524
+    },
+    "n_comments": 2860,
+    "n_bip": 41,
+    "share_ratio_draws_positive_xba": 0.891
+  },
+  "per_ball": {
+    "hit": {
+      "est": 0.55729265344978,
+      "lo": 0.22046722466375338,
+      "hi": 0.8416636375160431
+    },
+    "xba": {
+      "est": 0.41828613188655706,
+      "lo": -0.008594578184004272,
+      "hi": 0.9010653835982164
+    },
+    "n_bip": 41
+  },
+  "contrast": {
+    "own": {
+      "unlucky_out": {
+        "mean": -0.49962184873949583,
+        "lo": -0.5114736842105263,
+        "hi": 0.47,
+        "n": 119,
+        "n_clusters": 3
+      },
+      "expected_out": {
+        "mean": -0.31331884057971016,
+        "lo": -0.39526339221599877,
+        "hi": -0.15628142285954788,
+        "n": 345,
+        "n_clusters": 19
+      },
+      "lucky_hit": {
+        "mean": 0.49102179836512255,
+        "lo": 0.13788636302330606,
+        "hi": 0.6845933456561922,
+        "n": 367,
+        "n_clusters": 6
+      },
+      "expected_hit": {
+        "mean": 0.7317007104795737,
+        "lo": 0.644861814159292,
+        "hi": 0.7852750075586316,
+        "n": 1126,
+        "n_clusters": 13
+      }
+    },
+    "opponent": {
+      "unlucky_out": {
+        "mean": -0.5607142857142856,
+        "lo": -0.6228947368421052,
+        "hi": 0.03,
+        "n": 21,
+        "n_clusters": 2
+      },
+      "expected_out": {
+        "mean": -0.04695804195804197,
+        "lo": -0.1947342962184874,
+        "hi": 0.04449239417989416,
+        "n": 143,
+        "n_clusters": 13
+      },
+      "lucky_hit": {
+        "mean": -0.2451893939393939,
+        "lo": -0.37755555555555553,
+        "hi": -0.14351351351351352,
+        "n": 132,
+        "n_clusters": 5
+      },
+      "expected_hit": {
+        "mean": -0.3585514018691589,
+        "lo": -0.5507128623188405,
+        "hi": -0.21155715905576747,
+        "n": 107,
+        "n_clusters": 10
+      }
+    },
+    "neutral": {
+      "unlucky_out": {
+        "mean": -0.267,
+        "lo": -0.35874999999999996,
+        "hi": -0.15833333333333335,
+        "n": 15,
+        "n_clusters": 3
+      },
+      "expected_out": {
+        "mean": -0.17069105691056907,
+        "lo": -0.25010616803278685,
+        "hi": -0.10527905922643027,
+        "n": 123,
+        "n_clusters": 14
+      },
+      "lucky_hit": {
+        "mean": 0.06055555555555556,
+        "lo": -0.11182926829268293,
+        "hi": 0.28708791208791207,
+        "n": 126,
+        "n_clusters": 6
+      },
+      "expected_hit": {
+        "mean": 0.45533898305084747,
+        "lo": 0.3376716873304921,
+        "hi": 0.5341400735294117,
+        "n": 236,
+        "n_clusters": 13
+      }
+    }
+  },
+  "luck_awareness": {
+    "own": {
+      "unlucky_out": {
+        "n": 119,
+        "n_process": 0,
+        "share": 0.0
+      },
+      "expected_out": {
+        "n": 345,
+        "n_process": 4,
+        "share": 0.011594202898550725
+      },
+      "lucky_hit": {
+        "n": 367,
+        "n_process": 2,
+        "share": 0.005449591280653951
+      },
+      "expected_hit": {
+        "n": 1126,
+        "n_process": 1,
+        "share": 0.0008880994671403197
+      }
+    },
+    "opponent": {
+      "unlucky_out": {
+        "n": 21,
+        "n_process": 0,
+        "share": 0.0
+      },
+      "expected_out": {
+        "n": 143,
+        "n_process": 1,
+        "share": 0.006993006993006993
+      },
+      "lucky_hit": {
+        "n": 132,
+        "n_process": 1,
+        "share": 0.007575757575757576
+      },
+      "expected_hit": {
+        "n": 107,
+        "n_process": 5,
+        "share": 0.04672897196261682
+      }
+    },
+    "neutral": {
+      "unlucky_out": {
+        "n": 15,
+        "n_process": 0,
+        "share": 0.0
+      },
+      "expected_out": {
+        "n": 123,
+        "n_process": 1,
+        "share": 0.008130081300813009
+      },
+      "lucky_hit": {
+        "n": 126,
+        "n_process": 2,
+        "share": 0.015873015873015872
+      },
+      "expected_hit": {
+        "n": 236,
+        "n_process": 1,
+        "share": 0.00423728813559322
+      }
+    },
+    "all": {
+      "unlucky_out": {
+        "n": 155,
+        "n_process": 0,
+        "share": 0.0
+      },
+      "expected_out": {
+        "n": 611,
+        "n_process": 6,
+        "share": 0.009819967266775777
+      },
+      "lucky_hit": {
+        "n": 625,
+        "n_process": 5,
+        "share": 0.008
+      },
+      "expected_hit": {
+        "n": 1469,
+        "n_process": 7,
+        "share": 0.004765146358066712
+      }
+    }
+  },
+  "pitcher": {
+    "own_hit": {
+      "est": -0.37165745900285413,
+      "lo": -0.6969523561051396,
+      "hi": 0.022026352594177238
+    },
+    "own_xba": {
+      "est": 0.0053776780601828295,
+      "lo": -0.6028226891077143,
+      "hi": 0.5190080267428436
+    },
+    "opponent_hit": {
+      "est": 0.05639434787417141,
+      "lo": -0.14648141727984113,
+      "hi": 0.2675732142854572
+    },
+    "opponent_xba": {
+      "est": 0.09375064045078095,
+      "lo": -0.29806731403769104,
+      "hi": 0.5377958504950211
+    },
+    "neutral_hit": {
+      "est": -0.1622960014069088,
+      "lo": -0.33962961496835176,
+      "hi": 0.056233211219697474
+    },
+    "neutral_xba": {
+      "est": 0.07192888286639286,
+      "lo": -0.35573002788559965,
+      "hi": 0.46158709160810785
+    },
+    "abs_dwp": {
+      "est": -1.8829648310520244,
+      "lo": -4.809817200485001,
+      "hi": 1.2669435031821403
+    },
+    "own_ratio": {
+      "est": -69.11113957428284,
+      "lo": -28.690499398066613,
+      "hi": 32.176345338079386
+    },
+    "n_comments": 3002,
+    "n_bip": 47,
+    "share_ratio_draws_positive_xba": 0.509,
+    "thin_bip": [
+      "813027-71",
+      "813027-73"
+    ]
+  },
+  "robustness": {
+    "Main (Jev, main window)": {
+      "own_hit": {
+        "est": 0.96191690436037,
+        "lo": 0.6240642676639259,
+        "hi": 1.1078509868830877
+      },
+      "own_xba": {
+        "est": 0.15416968699386915,
+        "lo": -0.07890734629326113,
+        "hi": 0.6298818636871519
+      },
+      "n_comments": 2860,
+      "n_bip": 41
+    },
+    "RoBERTa sentiment": {
+      "own_hit": {
+        "est": 0.615415477325786,
+        "lo": 0.39795926738699944,
+        "hi": 0.7135425969726104
+      },
+      "own_xba": {
+        "est": -0.08988908869077762,
+        "lo": -0.2596345975008408,
+        "hi": 0.21779093196235505
+      },
+      "n_comments": 3119,
+      "n_bip": 41
+    },
+    "60 s window": {
+      "own_hit": {
+        "est": 0.9789398063175301,
+        "lo": 0.633372741140604,
+        "hi": 1.1445232783130626
+      },
+      "own_xba": {
+        "est": 0.16372412775950065,
+        "lo": -0.05950298843001976,
+        "hi": 0.6589864406272864
+      },
+      "n_comments": 2010,
+      "n_bip": 38
+    },
+    "180 s window": {
+      "own_hit": {
+        "est": 0.9186446920858108,
+        "lo": 0.5347145844225238,
+        "hi": 1.0689328307811303
+      },
+      "own_xba": {
+        "est": 0.21202700160485966,
+        "lo": -0.02062814491957258,
+        "hi": 0.7491508825993479
+      },
+      "n_comments": 3017,
+      "n_bip": 42
+    },
+    "No next-play cut": {
+      "own_hit": {
+        "est": 0.894183698858863,
+        "lo": 0.4900078103611004,
+        "hi": 1.0871056936627574
+      },
+      "own_xba": {
+        "est": 0.23305644433268682,
+        "lo": -0.0745810859619253,
+        "hi": 0.8343454649652534
+      },
+      "n_comments": 3422,
+      "n_bip": 42
+    },
+    "Name-match attribution only": {
+      "own_hit": {
+        "est": 0.8504858964244041,
+        "lo": 0.4660160066063858,
+        "hi": 1.08000668822828
+      },
+      "own_xba": {
+        "est": 0.310800835139773,
+        "lo": -0.016407201749859403,
+        "hi": 0.7588948261005497
+      },
+      "n_comments": 1117,
+      "n_bip": 37
+    },
+    "Without the biggest WP swing": {
+      "own_hit": {
+        "est": 0.959223905520263,
+        "lo": 0.6148108082937255,
+        "hi": 1.1086244536914334
+      },
+      "own_xba": {
+        "est": 0.1598266952592977,
+        "lo": -0.08279642545579195,
+        "hi": 0.6488974606314433
+      },
+      "n_comments": 2707,
+      "n_bip": 40
+    },
+    "Without home runs": {
+      "own_hit": {
+        "est": 1.0036587375751855,
+        "lo": 0.699288660214433,
+        "hi": 1.0962653630223675
+      },
+      "own_xba": {
+        "est": -0.0026429559771671968,
+        "lo": -0.18530598849206742,
+        "hi": 0.3753628293423458
+      },
+      "n_comments": 2131,
+      "n_bip": 37
+    },
+    "Per-ball means (each ball once)": {
+      "own_hit": {
+        "est": 0.55729265344978,
+        "lo": 0.22046722466375338,
+        "hi": 0.8416636375160431
+      },
+      "own_xba": {
+        "est": 0.41828613188655706,
+        "lo": -0.008594578184004272,
+        "hi": 0.9010653835982164
+      },
+      "n_comments": null,
+      "n_bip": 41
+    }
+  },
+  "biggest_wp_bip": "813027-33",
+  "balls": [
+    {
+      "bip_id": "813027-2",
+      "inning": 1,
+      "half": "top",
+      "batter": "Mookie Betts",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.046,
+      "launch_speed": 86.1,
+      "launch_angle": -35.0,
+      "delta_wp_batting_team": -0.016,
+      "description": "Mookie Betts grounds out, shortstop Andrés Giménez to first baseman Vladimir Guerrero Jr.",
+      "thin": false,
+      "n": {
+        "own": 2,
+        "opponent": 7,
+        "neutral": 3
+      },
+      "mean": {
+        "own": -0.493,
+        "opponent": 0.099,
+        "neutral": -0.185
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "mookie always gets bad calls",
+        "Mookie always getting screwed…"
+      ]
+    },
+    {
+      "bip_id": "813027-3",
+      "inning": 1,
+      "half": "top",
+      "batter": "Freddie Freeman",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.039,
+      "launch_speed": 80.8,
+      "launch_angle": -27.0,
+      "delta_wp_batting_team": -0.01,
+      "description": "Freddie Freeman grounds out, second baseman Bo Bichette to first baseman Vladimir Guerrero Jr.",
+      "thin": false,
+      "n": {
+        "own": 4,
+        "opponent": 1,
+        "neutral": 4
+      },
+      "mean": {
+        "own": 0.151,
+        "opponent": 0.865,
+        "neutral": -0.131
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "freeman will crack him",
+        "They must be sitting on the splitter or something because Freddie and Ohtani missed some…"
+      ]
+    },
+    {
+      "bip_id": "813027-4",
+      "inning": 1,
+      "half": "bot",
+      "batter": "George Springer",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "field_out",
+      "luck_category": "unlucky_out",
+      "xba": 0.446,
+      "launch_speed": 77.6,
+      "launch_angle": 12.0,
+      "delta_wp_batting_team": -0.022,
+      "description": "George Springer grounds out, shortstop Mookie Betts to first baseman Freddie Freeman.",
+      "thin": false,
+      "n": {
+        "own": 1,
+        "opponent": 19,
+        "neutral": 3
+      },
+      "mean": {
+        "own": 0.47,
+        "opponent": -0.623,
+        "neutral": -0.158
+      },
+      "process_share_own": 0.0,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-5",
+      "inning": 1,
+      "half": "bot",
+      "batter": "Davis Schneider",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.137,
+      "launch_speed": 62.7,
+      "launch_angle": 48.0,
+      "delta_wp_batting_team": -0.016,
+      "description": "Davis Schneider pops out to shortstop Mookie Betts.",
+      "thin": false,
+      "n": {
+        "own": 7,
+        "opponent": 1,
+        "neutral": 3
+      },
+      "mean": {
+        "own": -0.188,
+        "opponent": -0.055,
+        "neutral": -0.232
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Schneider copying Will Smith's batting stance right in front of him. Classic.",
+        "Shnider, or as my girlfriend calls him: 'The guy that looks suspiciously like BTK'"
+      ]
+    },
+    {
+      "bip_id": "813027-7",
+      "inning": 1,
+      "half": "bot",
+      "batter": "Bo Bichette",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "lucky_hit",
+      "xba": 0.054,
+      "launch_speed": 67.7,
+      "launch_angle": -5.0,
+      "delta_wp_batting_team": 0.026,
+      "description": "Bo Bichette singles on a ground ball to right fielder Teoscar Hernández. Vladimir Guerrero Jr. to 3rd.",
+      "thin": false,
+      "n": {
+        "own": 155,
+        "opponent": 1,
+        "neutral": 28
+      },
+      "mean": {
+        "own": 0.718,
+        "opponent": -0.465,
+        "neutral": 0.315
+      },
+      "process_share_own": 0.013,
+      "excerpts": [
+        "BO IS BACK BABYYYYYYYY",
+        "😩"
+      ]
+    },
+    {
+      "bip_id": "813027-9",
+      "inning": 1,
+      "half": "bot",
+      "batter": "Daulton Varsho",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.008,
+      "launch_speed": 96.3,
+      "launch_angle": 49.0,
+      "delta_wp_batting_team": -0.072,
+      "description": "Daulton Varsho flies out to center fielder Andy Pages.",
+      "thin": false,
+      "n": {
+        "own": 40,
+        "opponent": 0,
+        "neutral": 9
+      },
+      "mean": {
+        "own": -0.342,
+        "opponent": null,
+        "neutral": -0.242
+      },
+      "process_share_own": 0.025,
+      "excerpts": [
+        "Which also means way more pitches observed by Jays coaches, should help in future innings.",
+        "Fuck"
+      ]
+    },
+    {
+      "bip_id": "813027-11",
+      "inning": 2,
+      "half": "top",
+      "batter": "Teoscar Hernández",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "force_out",
+      "luck_category": "expected_out",
+      "xba": 0.054,
+      "launch_speed": 91.7,
+      "launch_angle": -25.0,
+      "delta_wp_batting_team": -0.035,
+      "description": "Teoscar Hernández grounds into a force out, shortstop Andrés Giménez to second baseman Bo Bichette. Will Smith out at 2nd. Teoscar Hernández to 1st.",
+      "thin": false,
+      "n": {
+        "own": 17,
+        "opponent": 6,
+        "neutral": 0
+      },
+      "mean": {
+        "own": 0.018,
+        "opponent": -0.008,
+        "neutral": null
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Oh shit Teo beat that out",
+        "Thanks for running that out Teo"
+      ]
+    },
+    {
+      "bip_id": "813027-12",
+      "inning": 2,
+      "half": "top",
+      "batter": "Max Muncy",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.924,
+      "launch_speed": 79.8,
+      "launch_angle": 20.0,
+      "delta_wp_batting_team": 0.039,
+      "description": "Max Muncy singles on a line drive to left fielder Davis Schneider. Teoscar Hernández to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 62,
+        "opponent": 1,
+        "neutral": 3
+      },
+      "mean": {
+        "own": 0.713,
+        "opponent": -0.44,
+        "neutral": 0.23
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "MUNCY RAHHH",
+        "With that Muncy hit, the doomers collectively started their menstrual cycles."
+      ]
+    },
+    {
+      "bip_id": "813027-13",
+      "inning": 2,
+      "half": "top",
+      "batter": "Enrique Hernández",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.658,
+      "launch_speed": 101.1,
+      "launch_angle": 8.0,
+      "delta_wp_batting_team": 0.098,
+      "description": "Enrique Hernández singles on a sharp ground ball to center fielder Daulton Varsho. Teoscar Hernández scores. Max Muncy to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 201,
+        "opponent": 11,
+        "neutral": 45
+      },
+      "mean": {
+        "own": 0.816,
+        "opponent": -0.266,
+        "neutral": 0.407
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "FUCK YEAH KIKE!!!",
+        "Smolz can take his Kiké analysis and shove it up his ass"
+      ]
+    },
+    {
+      "bip_id": "813027-14",
+      "inning": 2,
+      "half": "top",
+      "batter": "Tommy Edman",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "single",
+      "luck_category": null,
+      "xba": null,
+      "launch_speed": null,
+      "launch_angle": null,
+      "delta_wp_batting_team": 0.054,
+      "description": "Tommy Edman singles on a ground ball to third baseman Ernie Clement. Max Muncy to 3rd. Enrique Hernández to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-16",
+      "inning": 2,
+      "half": "top",
+      "batter": "Shohei Ohtani",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.072,
+      "launch_speed": 77.6,
+      "launch_angle": -8.0,
+      "delta_wp_batting_team": -0.069,
+      "description": "Shohei Ohtani grounds out to first baseman Vladimir Guerrero Jr.",
+      "thin": false,
+      "n": {
+        "own": 51,
+        "opponent": 34,
+        "neutral": 45
+      },
+      "mean": {
+        "own": -0.452,
+        "opponent": 0.079,
+        "neutral": -0.159
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Can Ohtani pitch every game? That seen unlock him now. Hopefully he can get something goi…",
+        "FUCK FUCK FUCK FUCK 😫😫😫😫😩😫"
+      ]
+    },
+    {
+      "bip_id": "813027-17",
+      "inning": 2,
+      "half": "bot",
+      "batter": "Ernie Clement",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.962,
+      "launch_speed": 68.3,
+      "launch_angle": 24.0,
+      "delta_wp_batting_team": 0.041,
+      "description": "Ernie Clement singles on a line drive to left fielder Enrique Hernández.",
+      "thin": false,
+      "n": {
+        "own": 122,
+        "opponent": 29,
+        "neutral": 20
+      },
+      "mean": {
+        "own": 0.594,
+        "opponent": -0.32,
+        "neutral": 0.227
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "I gotta get a clement jersey goddamn I love this guy",
+        "How the hell is Clems not hitting ahead of Varsho man. Especially with a leftie"
+      ]
+    },
+    {
+      "bip_id": "813027-20",
+      "inning": 2,
+      "half": "bot",
+      "batter": "George Springer",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "lucky_hit",
+      "xba": 0.184,
+      "launch_speed": 47.4,
+      "launch_angle": -29.0,
+      "delta_wp_batting_team": -0.025,
+      "description": "George Springer singles on a soft ground ball to first baseman Freddie Freeman. Ernie Clement out at 3rd, first baseman Freddie Freeman to pitcher Blake Snell to third baseman Max Muncy.",
+      "thin": false,
+      "n": {
+        "own": 6,
+        "opponent": 6,
+        "neutral": 9
+      },
+      "mean": {
+        "own": -0.369,
+        "opponent": 0.084,
+        "neutral": -0.311
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Think Snell missed the bag",
+        "Smh could’ve had 2 on base with Springer up"
+      ]
+    },
+    {
+      "bip_id": "813027-23",
+      "inning": 3,
+      "half": "top",
+      "batter": "Will Smith",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "single",
+      "luck_category": "lucky_hit",
+      "xba": 0.281,
+      "launch_speed": 96.2,
+      "launch_angle": -4.0,
+      "delta_wp_batting_team": 0.03,
+      "description": "Will Smith singles on a ground ball to right fielder Myles Straw. Mookie Betts scores. Freddie Freeman out at 3rd on the throw, right fielder Myles Straw to shortstop Andrés Giménez to third baseman Ernie Clement. Will Smith to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 64,
+        "opponent": 0,
+        "neutral": 1
+      },
+      "mean": {
+        "own": 0.565,
+        "opponent": null,
+        "neutral": -0.11
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "[link] GREAT HIT WILL!",
+        "oh wow that’s really smart from Will"
+      ]
+    },
+    {
+      "bip_id": "813027-24",
+      "inning": 3,
+      "half": "top",
+      "batter": "Teoscar Hernández",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.367,
+      "launch_speed": 99.7,
+      "launch_angle": -4.0,
+      "delta_wp_batting_team": -0.024,
+      "description": "Teoscar Hernández grounds out, second baseman Bo Bichette to first baseman Vladimir Guerrero Jr. Will Smith to 3rd.",
+      "thin": false,
+      "n": {
+        "own": 11,
+        "opponent": 0,
+        "neutral": 2
+      },
+      "mean": {
+        "own": -0.127,
+        "opponent": null,
+        "neutral": 0.008
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Jesus are we sure Bo was hurt what a fucking play, and was Teo jogging?",
+        "Teo too slow. Ugh!"
+      ]
+    },
+    {
+      "bip_id": "813027-27",
+      "inning": 3,
+      "half": "bot",
+      "batter": "Vladimir Guerrero Jr.",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.494,
+      "launch_speed": 101.9,
+      "launch_angle": 2.0,
+      "delta_wp_batting_team": 0.03,
+      "description": "Vladimir Guerrero Jr. singles on a ground ball to left fielder Enrique Hernández.",
+      "thin": false,
+      "n": {
+        "own": 22,
+        "opponent": 20,
+        "neutral": 2
+      },
+      "mean": {
+        "own": 0.62,
+        "opponent": -0.091,
+        "neutral": 0.155
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Vlad is simply insane",
+        "Lmao all the people crying for him in the last series. This is why"
+      ]
+    },
+    {
+      "bip_id": "813027-28",
+      "inning": 3,
+      "half": "bot",
+      "batter": "Bo Bichette",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "grounded_into_double_play",
+      "luck_category": "expected_out",
+      "xba": 0.058,
+      "launch_speed": 67.9,
+      "launch_angle": -3.0,
+      "delta_wp_batting_team": -0.06,
+      "description": "Bo Bichette grounds into a double play, first baseman Freddie Freeman to shortstop Mookie Betts to first baseman Freddie Freeman. Vladimir Guerrero Jr. out at 2nd. Bo Bichette out at 1st.",
+      "thin": false,
+      "n": {
+        "own": 57,
+        "opponent": 25,
+        "neutral": 14
+      },
+      "mean": {
+        "own": -0.468,
+        "opponent": -0.095,
+        "neutral": -0.346
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Anyone know what Bo’s hairstyle is now? My wife is missing his flow",
+        "fuck..."
+      ]
+    },
+    {
+      "bip_id": "813027-31",
+      "inning": 4,
+      "half": "top",
+      "batter": "Andy Pages",
+      "batter_team": "LAD",
+      "pitcher": "Trey Yesavage",
+      "event": "field_out",
+      "luck_category": "unlucky_out",
+      "xba": 0.418,
+      "launch_speed": 100.1,
+      "launch_angle": 33.0,
+      "delta_wp_batting_team": -0.009,
+      "description": "Andy Pages flies out sharply to right fielder Myles Straw.",
+      "thin": false,
+      "n": {
+        "own": 95,
+        "opponent": 0,
+        "neutral": 8
+      },
+      "mean": {
+        "own": -0.511,
+        "opponent": null,
+        "neutral": -0.262
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "I still believe. He had a great regular season and also had a bad slump the first 4 weeks…",
+        "#GOD DAMMIT ANDY 🫠🤦🏾🤦🏾🤦🏾🤦🏾🤦🏾"
+      ]
+    },
+    {
+      "bip_id": "813027-32",
+      "inning": 4,
+      "half": "bot",
+      "batter": "Alejandro Kirk",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "lucky_hit",
+      "xba": 0.242,
+      "launch_speed": 97.9,
+      "launch_angle": 23.0,
+      "delta_wp_batting_team": 0.048,
+      "description": "Alejandro Kirk singles on a line drive to right fielder Teoscar Hernández.",
+      "thin": false,
+      "n": {
+        "own": 35,
+        "opponent": 35,
+        "neutral": 14
+      },
+      "mean": {
+        "own": 0.554,
+        "opponent": -0.381,
+        "neutral": -0.171
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "KIRKY!!!",
+        "Where are those legs from Seattle, Kirk"
+      ]
+    },
+    {
+      "bip_id": "813027-33",
+      "inning": 4,
+      "half": "bot",
+      "batter": "Daulton Varsho",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "home_run",
+      "luck_category": "expected_hit",
+      "xba": 0.942,
+      "launch_speed": 109.0,
+      "launch_angle": 25.0,
+      "delta_wp_batting_team": 0.201,
+      "description": "Daulton Varsho homers (3) on a fly ball to center field. Alejandro Kirk scores.",
+      "thin": false,
+      "n": {
+        "own": 120,
+        "opponent": 7,
+        "neutral": 26
+      },
+      "mean": {
+        "own": 0.768,
+        "opponent": -0.539,
+        "neutral": 0.529
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "VARSHO BOMB LETS FUCKING GOOOOOOOOOOOOOOOOOOOOO",
+        ">ANYONE WHO THINKS DAULTON VARSHO IS GOING TO SAVE THIS TEAM'S OFFENCE IS DELUSIONAL. TEL…"
+      ]
+    },
+    {
+      "bip_id": "813027-34",
+      "inning": 4,
+      "half": "bot",
+      "batter": "Ernie Clement",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.015,
+      "launch_speed": 85.7,
+      "launch_angle": 52.0,
+      "delta_wp_batting_team": -0.027,
+      "description": "Ernie Clement flies out to center fielder Andy Pages.",
+      "thin": false,
+      "n": {
+        "own": 8,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": -0.006,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "I'll admit when I'm wrong, varsho is a beast. I'm sorry daulton",
+        "C'mon Clement, you should get more than one pitch out of that at bat"
+      ]
+    },
+    {
+      "bip_id": "813027-35",
+      "inning": 4,
+      "half": "bot",
+      "batter": "Myles Straw",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.238,
+      "launch_speed": 81.5,
+      "launch_angle": 26.0,
+      "delta_wp_batting_team": -0.02,
+      "description": "Myles Straw lines out to left fielder Enrique Hernández.",
+      "thin": false,
+      "n": {
+        "own": 5,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": 0.049,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": 0.2,
+      "excerpts": [
+        "Fuck, that was good contact by Straw",
+        "Regrettably, that was a good play"
+      ]
+    },
+    {
+      "bip_id": "813027-38",
+      "inning": 5,
+      "half": "top",
+      "batter": "Mookie Betts",
+      "batter_team": "LAD",
+      "pitcher": "Mason Fluharty",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.585,
+      "launch_speed": 99.2,
+      "launch_angle": 6.0,
+      "delta_wp_batting_team": 0.033,
+      "description": "Mookie Betts singles on a ground ball to center fielder Daulton Varsho.",
+      "thin": false,
+      "n": {
+        "own": 39,
+        "opponent": 13,
+        "neutral": 12
+      },
+      "mean": {
+        "own": 0.208,
+        "opponent": -0.281,
+        "neutral": 0.112
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Mookie single!!!",
+        "What is going on this ump is ruining the game. It’s rigged like the nba its that bad. Moo…"
+      ]
+    },
+    {
+      "bip_id": "813027-39",
+      "inning": 5,
+      "half": "top",
+      "batter": "Freddie Freeman",
+      "batter_team": "LAD",
+      "pitcher": "Mason Fluharty",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.332,
+      "launch_speed": 98.4,
+      "launch_angle": 26.0,
+      "delta_wp_batting_team": -0.039,
+      "description": "Freddie Freeman flies out to center fielder Daulton Varsho.",
+      "thin": false,
+      "n": {
+        "own": 38,
+        "opponent": 32,
+        "neutral": 10
+      },
+      "mean": {
+        "own": -0.265,
+        "opponent": 0.016,
+        "neutral": 0.057
+      },
+      "process_share_own": 0.053,
+      "excerpts": [
+        "Good fight Freddie",
+        "Fuuuuuuuuuuuck I thought he got that"
+      ]
+    },
+    {
+      "bip_id": "813027-40",
+      "inning": 5,
+      "half": "top",
+      "batter": "Will Smith",
+      "batter_team": "LAD",
+      "pitcher": "Seranthony Domínguez",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.005,
+      "launch_speed": 90.9,
+      "launch_angle": 47.0,
+      "delta_wp_batting_team": -0.031,
+      "description": "Will Smith flies out to right fielder Myles Straw.",
+      "thin": false,
+      "n": {
+        "own": 23,
+        "opponent": 8,
+        "neutral": 0
+      },
+      "mean": {
+        "own": -0.459,
+        "opponent": -0.174,
+        "neutral": null
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Will my man [link]",
+        "Fuck man"
+      ]
+    },
+    {
+      "bip_id": "813027-41",
+      "inning": 5,
+      "half": "bot",
+      "batter": "George Springer",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.901,
+      "launch_speed": 80.7,
+      "launch_angle": 20.0,
+      "delta_wp_batting_team": 0.046,
+      "description": "George Springer singles on a line drive to left fielder Enrique Hernández.",
+      "thin": false,
+      "n": {
+        "own": 19,
+        "opponent": 17,
+        "neutral": 6
+      },
+      "mean": {
+        "own": 0.602,
+        "opponent": -0.776,
+        "neutral": 0.004
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Springer 🐐",
+        "Redemption? What?"
+      ]
+    },
+    {
+      "bip_id": "813027-42",
+      "inning": 5,
+      "half": "bot",
+      "batter": "Davis Schneider",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "grounded_into_double_play",
+      "luck_category": "expected_out",
+      "xba": 0.045,
+      "launch_speed": 65.2,
+      "launch_angle": -14.0,
+      "delta_wp_batting_team": -0.098,
+      "description": "Davis Schneider grounds into a double play, third baseman Max Muncy to second baseman Tommy Edman to first baseman Freddie Freeman. George Springer out at 2nd. Davis Schneider out at 1st.",
+      "thin": false,
+      "n": {
+        "own": 45,
+        "opponent": 0,
+        "neutral": 7
+      },
+      "mean": {
+        "own": -0.523,
+        "opponent": null,
+        "neutral": -0.321
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "He's good against lefties",
+        "Seriously. Get this fucking bum off the team"
+      ]
+    },
+    {
+      "bip_id": "813027-43",
+      "inning": 5,
+      "half": "bot",
+      "batter": "Vladimir Guerrero Jr.",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.268,
+      "launch_speed": 63.7,
+      "launch_angle": 15.0,
+      "delta_wp_batting_team": -0.015,
+      "description": "Vladimir Guerrero Jr. grounds out, second baseman Tommy Edman to first baseman Freddie Freeman.",
+      "thin": false,
+      "n": {
+        "own": 7,
+        "opponent": 9,
+        "neutral": 4
+      },
+      "mean": {
+        "own": 0.024,
+        "opponent": 0.058,
+        "neutral": -0.353
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "1.450 OPS is fucking insane",
+        "That sucked"
+      ]
+    },
+    {
+      "bip_id": "813027-45",
+      "inning": 6,
+      "half": "top",
+      "batter": "Max Muncy",
+      "batter_team": "LAD",
+      "pitcher": "Seranthony Domínguez",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.008,
+      "launch_speed": 86.8,
+      "launch_angle": 69.0,
+      "delta_wp_batting_team": -0.025,
+      "description": "Max Muncy pops out to third baseman Ernie Clement in foul territory.",
+      "thin": false,
+      "n": {
+        "own": 5,
+        "opponent": 1,
+        "neutral": 1
+      },
+      "mean": {
+        "own": -0.406,
+        "opponent": -0.155,
+        "neutral": -0.395
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Looks like it so far 👀",
+        "2-0 popup. This is getting really, really bad."
+      ]
+    },
+    {
+      "bip_id": "813027-48",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Alejandro Kirk",
+      "batter_team": "TOR",
+      "pitcher": "Blake Snell",
+      "event": "single",
+      "luck_category": "lucky_hit",
+      "xba": 0.166,
+      "launch_speed": 99.0,
+      "launch_angle": -12.0,
+      "delta_wp_batting_team": 0.072,
+      "description": "Alejandro Kirk singles on a ground ball to right fielder Teoscar Hernández. Isiah Kiner-Falefa to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 30,
+        "opponent": 18,
+        "neutral": 7
+      },
+      "mean": {
+        "own": 0.597,
+        "opponent": -0.353,
+        "neutral": 0.518
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "KIRKY!!",
+        "Worried they might try to deport Kirk in LA"
+      ]
+    },
+    {
+      "bip_id": "813027-50",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Ernie Clement",
+      "batter_team": "TOR",
+      "pitcher": "Emmet Sheehan",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.597,
+      "launch_speed": 96.3,
+      "launch_angle": 7.0,
+      "delta_wp_batting_team": 0.086,
+      "description": "Ernie Clement singles on a ground ball to center fielder Andy Pages. Isiah Kiner-Falefa scores. Alejandro Kirk to 3rd. Daulton Varsho to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 189,
+        "opponent": 2,
+        "neutral": 45
+      },
+      "mean": {
+        "own": 0.742,
+        "opponent": -0.242,
+        "neutral": 0.594
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "LET'S GOOOO ERNIE CLEMENT!!!!",
+        "Kirk :("
+      ]
+    },
+    {
+      "bip_id": "813027-52",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Andrés Giménez",
+      "batter_team": "TOR",
+      "pitcher": "Emmet Sheehan",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.729,
+      "launch_speed": 102.4,
+      "launch_angle": 9.0,
+      "delta_wp_batting_team": 0.032,
+      "description": "Andrés Giménez singles on a sharp line drive to right fielder Teoscar Hernández. Daulton Varsho scores. Ernie Clement to 3rd. Nathan Lukes to 2nd.",
+      "thin": false,
+      "n": {
+        "own": 29,
+        "opponent": 0,
+        "neutral": 2
+      },
+      "mean": {
+        "own": 0.758,
+        "opponent": null,
+        "neutral": 0.705
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "OMG GIMÉ I LOVE YOU",
+        "shouldn’t have said it outloud"
+      ]
+    },
+    {
+      "bip_id": "813027-53",
+      "inning": 6,
+      "half": "bot",
+      "batter": "George Springer",
+      "batter_team": "TOR",
+      "pitcher": "Emmet Sheehan",
+      "event": "force_out",
+      "luck_category": "expected_out",
+      "xba": 0.137,
+      "launch_speed": 91.6,
+      "launch_angle": -16.0,
+      "delta_wp_batting_team": -0.017,
+      "description": "George Springer grounds into a force out, shortstop Mookie Betts to catcher Will Smith. Ernie Clement out at home. Nathan Lukes to 3rd. Andrés Giménez to 2nd. George Springer to 1st.",
+      "thin": false,
+      "n": {
+        "own": 12,
+        "opponent": 14,
+        "neutral": 19
+      },
+      "mean": {
+        "own": 0.209,
+        "opponent": -0.476,
+        "neutral": -0.07
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Springer up next... bases loaded... 0 outs.... LFG!!!",
+        "Dang it Georgie"
+      ]
+    },
+    {
+      "bip_id": "813027-54",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Addison Barger",
+      "batter_team": "TOR",
+      "pitcher": "Anthony Banda",
+      "event": "home_run",
+      "luck_category": "expected_hit",
+      "xba": 0.775,
+      "launch_speed": 106.2,
+      "launch_angle": 31.0,
+      "delta_wp_batting_team": 0.05,
+      "description": "Addison Barger hits a grand slam (3) to center field. Nathan Lukes scores. Andrés Giménez scores. George Springer scores.",
+      "thin": false,
+      "n": {
+        "own": 204,
+        "opponent": 5,
+        "neutral": 46
+      },
+      "mean": {
+        "own": 0.841,
+        "opponent": -0.569,
+        "neutral": 0.534
+      },
+      "process_share_own": 0.005,
+      "excerpts": [
+        "BARGER BLAST 🗣️🗣️🗣️",
+        "Hey man. I’ll leave you alone if you acknowledge me. ☝️"
+      ]
+    },
+    {
+      "bip_id": "813027-55",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Vladimir Guerrero Jr.",
+      "batter_team": "TOR",
+      "pitcher": "Anthony Banda",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.641,
+      "launch_speed": 72.6,
+      "launch_angle": 29.0,
+      "delta_wp_batting_team": 0.001,
+      "description": "Vladimir Guerrero Jr. singles on a fly ball to center fielder Andy Pages.",
+      "thin": false,
+      "n": {
+        "own": 11,
+        "opponent": 0,
+        "neutral": 6
+      },
+      "mean": {
+        "own": 0.453,
+        "opponent": null,
+        "neutral": 0.441
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Vladdy keeping it Rollin!",
+        "Too bad huh"
+      ]
+    },
+    {
+      "bip_id": "813027-56",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Isiah Kiner-Falefa",
+      "batter_team": "TOR",
+      "pitcher": "Anthony Banda",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.046,
+      "launch_speed": 99.5,
+      "launch_angle": 45.0,
+      "delta_wp_batting_team": -0.001,
+      "description": "Isiah Kiner-Falefa flies out to left fielder Enrique Hernández.",
+      "thin": false,
+      "n": {
+        "own": 5,
+        "opponent": 0,
+        "neutral": 1
+      },
+      "mean": {
+        "own": 0.331,
+        "opponent": null,
+        "neutral": 0.045
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Gotta say Schneids in managing this perfectly, even taking Bo out not to where him down a…",
+        "Optimistic crowd thinking IKF hit a Homer there"
+      ]
+    },
+    {
+      "bip_id": "813027-57",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Alejandro Kirk",
+      "batter_team": "TOR",
+      "pitcher": "Anthony Banda",
+      "event": "home_run",
+      "luck_category": "expected_hit",
+      "xba": 0.615,
+      "launch_speed": 102.3,
+      "launch_angle": 29.0,
+      "delta_wp_batting_team": 0.006,
+      "description": "Alejandro Kirk homers (4) on a fly ball to center field. Vladimir Guerrero Jr. scores.",
+      "thin": false,
+      "n": {
+        "own": 83,
+        "opponent": 2,
+        "neutral": 20
+      },
+      "mean": {
+        "own": 0.783,
+        "opponent": 0.027,
+        "neutral": 0.578
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "KIRK!!!!!!!!",
+        "YOU HAVE GOT TO BE KIDDING ME"
+      ]
+    },
+    {
+      "bip_id": "813027-58",
+      "inning": 6,
+      "half": "bot",
+      "batter": "Daulton Varsho",
+      "batter_team": "TOR",
+      "pitcher": "Anthony Banda",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.02,
+      "launch_speed": 90.5,
+      "launch_angle": 59.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Daulton Varsho flies out to left fielder Enrique Hernández.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-61",
+      "inning": 7,
+      "half": "top",
+      "batter": "Shohei Ohtani",
+      "batter_team": "LAD",
+      "pitcher": "Braydon Fisher",
+      "event": "home_run",
+      "luck_category": "lucky_hit",
+      "xba": 0.271,
+      "launch_speed": 103.7,
+      "launch_angle": 41.0,
+      "delta_wp_batting_team": 0.004,
+      "description": "Shohei Ohtani homers (6) on a fly ball to right field. Tommy Edman scores.",
+      "thin": false,
+      "n": {
+        "own": 77,
+        "opponent": 72,
+        "neutral": 67
+      },
+      "mean": {
+        "own": -0.03,
+        "opponent": -0.176,
+        "neutral": 0.007
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Ohtaniiiiiiii",
+        "Ohtani hits a huge 3 to cut the lead to 45"
+      ]
+    },
+    {
+      "bip_id": "813027-63",
+      "inning": 7,
+      "half": "top",
+      "batter": "Freddie Freeman",
+      "batter_team": "LAD",
+      "pitcher": "Braydon Fisher",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.008,
+      "launch_speed": 93.5,
+      "launch_angle": 46.0,
+      "delta_wp_batting_team": -0.001,
+      "description": "Freddie Freeman flies out to right fielder Addison Barger.",
+      "thin": false,
+      "n": {
+        "own": 3,
+        "opponent": 4,
+        "neutral": 1
+      },
+      "mean": {
+        "own": -0.413,
+        "opponent": -0.2,
+        "neutral": -0.275
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Freddie gotta put that middle middle curve in the stands",
+        "We need two more dramatic grand slams from Freeman."
+      ]
+    },
+    {
+      "bip_id": "813027-64",
+      "inning": 7,
+      "half": "bot",
+      "batter": "Ernie Clement",
+      "batter_team": "TOR",
+      "pitcher": "Justin Wrobleski",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.247,
+      "launch_speed": 96.2,
+      "launch_angle": 30.0,
+      "delta_wp_batting_team": -0.001,
+      "description": "Ernie Clement flies out to center fielder Andy Pages.",
+      "thin": false,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-65",
+      "inning": 7,
+      "half": "bot",
+      "batter": "Nathan Lukes",
+      "batter_team": "TOR",
+      "pitcher": "Justin Wrobleski",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.182,
+      "launch_speed": 76.7,
+      "launch_angle": -51.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Nathan Lukes grounds out, third baseman Max Muncy to first baseman Freddie Freeman.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-66",
+      "inning": 7,
+      "half": "bot",
+      "batter": "Andrés Giménez",
+      "batter_team": "TOR",
+      "pitcher": "Justin Wrobleski",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.259,
+      "launch_speed": 92.2,
+      "launch_angle": -8.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Andrés Giménez grounds out, second baseman Tommy Edman to first baseman Freddie Freeman.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-67",
+      "inning": 8,
+      "half": "top",
+      "batter": "Will Smith",
+      "batter_team": "LAD",
+      "pitcher": "Chris Bassitt",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.267,
+      "launch_speed": 78.6,
+      "launch_angle": -64.0,
+      "delta_wp_batting_team": -0.002,
+      "description": "Will Smith grounds out to first baseman Vladimir Guerrero Jr.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-71",
+      "inning": 8,
+      "half": "bot",
+      "batter": "George Springer",
+      "batter_team": "TOR",
+      "pitcher": "Will Klein",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.056,
+      "launch_speed": 78.9,
+      "launch_angle": 44.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "George Springer flies out to left fielder Enrique Hernández.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-72",
+      "inning": 8,
+      "half": "bot",
+      "batter": "Addison Barger",
+      "batter_team": "TOR",
+      "pitcher": "Will Klein",
+      "event": "single",
+      "luck_category": "expected_hit",
+      "xba": 0.547,
+      "launch_speed": 110.8,
+      "launch_angle": 0.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Addison Barger singles on a ground ball to left fielder Enrique Hernández.",
+      "thin": false,
+      "n": {
+        "own": 25,
+        "opponent": 0,
+        "neutral": 3
+      },
+      "mean": {
+        "own": 0.561,
+        "opponent": null,
+        "neutral": 0.52
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "BARGER!!",
+        "Way to go Ken interrupting Barger's hit lmao."
+      ]
+    },
+    {
+      "bip_id": "813027-73",
+      "inning": 8,
+      "half": "bot",
+      "batter": "Vladimir Guerrero Jr.",
+      "batter_team": "TOR",
+      "pitcher": "Will Klein",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.204,
+      "launch_speed": 95.1,
+      "launch_angle": 29.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Vladimir Guerrero Jr. flies out to center fielder Andy Pages.",
+      "thin": false,
+      "n": {
+        "own": 5,
+        "opponent": 1,
+        "neutral": 0
+      },
+      "mean": {
+        "own": 0.208,
+        "opponent": -0.48,
+        "neutral": null
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "Vlad quiet today but all good, you rest king",
+        "Somehow Vladdy's OPS has gone down even though he's batting 667 + a walk tonight (prior t…"
+      ]
+    },
+    {
+      "bip_id": "813027-74",
+      "inning": 8,
+      "half": "bot",
+      "batter": "Isiah Kiner-Falefa",
+      "batter_team": "TOR",
+      "pitcher": "Will Klein",
+      "event": "field_out",
+      "luck_category": "unlucky_out",
+      "xba": 0.511,
+      "launch_speed": 73.0,
+      "launch_angle": 31.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Isiah Kiner-Falefa flies out to left fielder Enrique Hernández.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-75",
+      "inning": 9,
+      "half": "top",
+      "batter": "Tommy Edman",
+      "batter_team": "LAD",
+      "pitcher": "Eric Lauer",
+      "event": "field_out",
+      "luck_category": "expected_out",
+      "xba": 0.005,
+      "launch_speed": 69.9,
+      "launch_angle": 89.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Tommy Edman pops out to catcher Alejandro Kirk in foul territory.",
+      "thin": true,
+      "n": {
+        "own": 0,
+        "opponent": 0,
+        "neutral": 0
+      },
+      "mean": {
+        "own": null,
+        "opponent": null,
+        "neutral": null
+      },
+      "process_share_own": null,
+      "excerpts": []
+    },
+    {
+      "bip_id": "813027-76",
+      "inning": 9,
+      "half": "top",
+      "batter": "Andy Pages",
+      "batter_team": "LAD",
+      "pitcher": "Eric Lauer",
+      "event": "field_out",
+      "luck_category": "unlucky_out",
+      "xba": 0.547,
+      "launch_speed": 91.5,
+      "launch_angle": 18.0,
+      "delta_wp_batting_team": 0.0,
+      "description": "Andy Pages lines out to right fielder Addison Barger.",
+      "thin": false,
+      "n": {
+        "own": 23,
+        "opponent": 2,
+        "neutral": 4
+      },
+      "mean": {
+        "own": -0.493,
+        "opponent": 0.03,
+        "neutral": -0.359
+      },
+      "process_share_own": 0.0,
+      "excerpts": [
+        "He clearly needs to draw more walks. But in that situation, savage threw a perfect slider…",
+        ".079 postseason average lmao Bench this fucker tomorrow"
+      ]
+    }
+  ]
+}

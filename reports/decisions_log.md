@@ -1,0 +1,18 @@
+# Decisions log
+
+Every change from the README, with the reason, logged before the results it could affect.
+
+| Date | Phase | Decision | Why |
+|---|---|---|---|
+| 2026-10-21 | 0 | `author_hash` re-made with a salted HMAC (salt in `.env`) instead of reusing mlb-fan-live's hash. | The source hash is unsalted SHA-256 and could be reversed from a list of usernames. |
+| 2026-10-21 | 0 | Reaction lag recomputed from mlb-fan-live's own `lag` code and saved as `data/imported/reaction_lag.json`. | mlb-fan-live never saved it as data. |
+| 2026-10-21 | 0 | LLM smoke test postponed to Phase 3. | Phase 3 is the first phase that calls an LLM. |
+| 2026-10-21 | 0 | Luck thresholds loosened from the README's 0.50 / 0.25 to: unlucky out = out with xBA ≥ 0.40; lucky hit = hit with xBA ≤ 0.30. Agreed with Atharva. | With 0.50 / 0.25 there were only 2 unlucky outs, both in the 8th–9th of a decided game. 0.40 / 0.30 gives 4 and 6. Changed before any comment data was read. The regression uses xBA as a continuous value, so it doesn't depend on these cut-offs. |
+| 2026-10-21 | 3 | Phase 3 runs **local-only**: keyword filter + local zero-shot NLI (Classifier B). The LLM classifier (A) is built, cached and spend-capped but not run. Agreed with Atharva. | LLM Foundry isn't reachable from this laptop. The page reports NLI-only counts and says so. To add A later, follow "Running with the LLM later" in the README. |
+| 2026-10-21 | 2 | Batted balls with fewer than 5 batter-attributed comments in the main window are excluded from the batter analysis (7 of 49 with xBA; all but one are 7th–9th inning outs). Set before the first model run. | README Phase 1 rule. Pooling them would mix different batters. |
+| 2026-10-21 | 2 | Model adds `xba × fanbase` next to the README's `hit × fanbase`; own fans are the reference group. Set before the first model run. | Opponents' feelings about a batter's contact plausibly run the other way, so a single xBA slope would blur the own-fan process effect. |
+| 2026-10-21 | 2 | Extra robustness rows: "No next-play cut" and "Per-ball means" (each ball counted once). | Comment-level OLS lets the busiest plays (e.g. the grand slam, 340 comments) dominate; per-ball means check that. |
+| 2026-10-21 | 3 | The team a prediction backs is set by wording plus the score when it was posted: "we got this" → the writer's team; "we're cooked" → the other team; "coming back" → the team behind; "it's over" → the team ahead. The LLM's and then NLI's guess are used only when no rule applies. Postgame inevitability claims back the actual winner. Changed after seeing the first classifier output, **before any hindsight numbers**. | NLI gave a team for only 54 of 167 predictions and got clear cases wrong ("Game over. Ohtani struck out" → LAD). Without knowing the score it can't tell who "it's over" refers to. |
+| 2026-10-21 | 3 | NLI threshold kept at 0.80 even though only 9 postgame claims pass. | Scores are bimodal (median 0.0006); dropping to 0.5 would add 2. Rare claims are a finding, not a reason to tune. |
+| 2026-10-21 | 5 | Phase 5 (manager decisions, optional) skipped. | Time; the README marks it optional. |
+| 2026-10-21 | 1 | Reaction window: start at play end + 15 s; end at the stream's 90%-arrived lag (135–160 s) or the next play's end + 15 s, whichever is earlier. The 60 s and 180 s lengths are kept as robustness checks. Agreed with Atharva. | Decided from the lag curves only, before any outcome numbers. Reactions start 15–20 s after a play and peak at 40–110 s, so a window that opens at the peak misses the first wave. Plays end a median 116 s apart, and reactions to the next play only start about 15 s after it ends. |
